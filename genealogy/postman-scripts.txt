@@ -1,0 +1,186 @@
+[
+
+	{
+		"relation" : "child",
+		"person1" : {
+			"name" : "Diana",
+			"gender": "female",
+			"firstName": "Greg",
+			"lastName": "Reynold",
+			"dateOfBirth": "12.06.1960",
+			"dateOfDeath": "",
+			"isAlive": true
+		},
+		"person2" : {
+			"name" : "Kate",
+			"gender": "female",
+			"firstName": "Kate",
+			"lastName": "Daniels",
+			"dateOfBirth": "12.06.1934",
+			"dateOfDeath": "02.08.1995",
+			"isAlive": false
+		}
+	},
+
+
+
+	{
+		"relation" : "child",
+		"person1" : {
+			"name" : "Greg",
+			"gender": "male"
+		},
+		"person2" : {
+			"name" : "Diana",
+			"gender": "female"
+		}
+	},
+
+
+
+	{
+		"relation" : "child",
+		"person1" : {
+			"name" : "Greg",
+			"gender": "male"
+		},
+		"person2" : {
+			"name" : "Daniel",
+			"gender": "male"
+		}
+	},
+
+
+
+	{
+		"relation" : "parent",
+		"person1" : {
+			"name" : "Greg",
+			"gender": "male"
+		},
+		"person2" : {
+			"name" : "Roy",
+			"gender": "male"
+		}
+	},
+
+
+	{
+		"relation" : "child",
+		"person1" : {
+			"name" : "Rita",
+			"gender": "female"
+		},
+		"person2" : {
+			"name" : "Greg",
+			"gender": "male"
+		}
+	},
+
+
+
+	{
+		"relation" : "parent",
+		"person1" : {
+			"name" : "Angelina",
+			"gender": "female"
+		},
+		"person2" : {
+			"name" : "Rita",
+			"gender": "female"
+		}
+	},
+
+
+
+	{
+		"relation" : "married",
+		"person1" : {
+			"name" : "Angelina",
+			"gender": "female"
+		},
+		"person2" : {
+			"name" : "Greg",
+			"gender": "male"
+		}
+	},
+
+
+
+	{
+		"relation" : "friend",
+		"person1" : {
+			"name" : "Roy",
+			"gender": "male"
+		},
+		"person2" : {
+			"name" : "Gary",
+			"gender": "male"
+		}
+	},
+	
+	
+	
+	{
+		"relation" : "child",
+		"person1" : {
+			"name" : "Diana",
+			"gender": "female"
+		},
+		"person2" : {
+			"name" : "Jack",
+			"gender": "male",
+			"firstName": "Jack",
+			"lastName": "Daniels",
+			"dateOfBirth": "12.06.1932",
+			"dateOfDeath": "08.09.2003",
+			"isAlive": false
+		}
+	},
+	
+	{
+		"relation" : "parent",
+		"person1" : {
+			"name" : "Jake",
+			"gender": "male",
+			"firstName": "Jake",
+			"lastName": "Robbertson",
+			"dateOfBirth": "11.12.1973",
+			"dateOfDeath": "",
+			"isAlive": true
+		},
+		"person2" : {
+			"name" : "Gary",
+			"gender": "male",
+			"firstName": "Gary",
+			"lastName": "Robbertson",
+			"dateOfBirth": "07.06.1998",
+			"dateOfDeath": "",
+			"isAlive": true
+		}
+	},
+	
+	{
+		"relation" : "parent",
+		"person1" : {
+			"name" : "Jake",
+			"gender": "male",
+			"firstName": "Jake",
+			"lastName": "Robbertson",
+			"dateOfBirth": "11.12.1973",
+			"dateOfDeath": "",
+			"isAlive": true
+		},
+		"person2" : {
+			"name" : "Jane",
+			"gender": "female",
+			"firstName": "Jane",
+			"lastName": "Robbertson",
+			"dateOfBirth": "07.06.1998",
+			"dateOfDeath": "",
+			"isAlive": false
+		}
+	}
+
+
+]
