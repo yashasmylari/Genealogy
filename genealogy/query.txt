@@ -7,7 +7,7 @@ Person {
 	String firstName;
 	String lastName;
 	String dateOfBirth;
-	String birthPlace;
+	String placeOfBirth;
 	Boolean isAlive;
 	String dateOfDeath;
 	String region;

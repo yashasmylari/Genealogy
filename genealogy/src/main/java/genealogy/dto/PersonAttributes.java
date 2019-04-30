@@ -7,6 +7,7 @@ public class PersonAttributes {
 	String firstName;
 	String lastName;
 	String dateOfBirth;
+	String placeOfBirth;
 	Boolean isAlive;
 	String dateOfDeath;
 	String region;
