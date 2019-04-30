@@ -89,97 +89,13 @@ public final class PersonUtil {
 	}
 
 
-	/**
-	 * Saves the person in the database using the given respository.
-	 * @param person
-	 * @param personNode
-	 * @param personRepository
-	 * @return person
-	 */
-	public static Person savePerson(Person person, Person personNode, PersonRepository personRepository) {
-		if(personNode==null) {
-			personRepository.save(person);
-			return personRepository.findByName(person.getName());
-		}
-		else {
-			if(person.jsonString().length() > personNode.jsonString().length()) {
-				setAttributeFromPerson(personNode, person);
-				personRepository.save(personNode);
-			}
-			personNode.setRelation(person.getRelation());
-			return personNode;
-		}
-	}
-
 
 	/**
-	 * Saves the person in the database using the given repository.
-	 * @param person
-	 * @param personNode
-	 * @param personRepository
+	 * Creates the {@link Person} model from the JSONObject input.
+	 * @param jsonPerson
 	 * @return person
+	 * @throws JSONException
 	 */
-	public static Person savePersonRelationship(Person person, Person personNode, Person personNodeRelated, PersonRepository personRepository) {
-		Person tempPerson;
-
-		if(personNode==null) {
-			tempPerson = person;
-		}
-		else {
-			if(person.jsonString().length() > personNode.jsonString().length()) {
-				setAttributeFromPerson(personNode, person);
-				personRepository.save(personNode);
-			}
-			tempPerson = personNode;
-			tempPerson.setRelation(person.getRelation());
-		}
-
-		tempPerson.setRelationShip(personNodeRelated);
-		personNodeRelated.setRelationShip(tempPerson);
-
-		String relation1 = tempPerson.getRelation();
-		String relation2 = personNodeRelated.getRelation();
-
-		tempPerson.setRelation(null);
-		personNodeRelated.setRelation(null);
-
-		personNode = personRepository.save(tempPerson);
-
-		// The relationship with the other node is working, hence commented the below code
-		personRepository.save(personNodeRelated);
-
-		personNode.setRelation(relation1);
-		personNodeRelated.setRelation(relation2);
-
-		return personNode;
-	}
-
-
-	public static Person getPersonFromJsonString(String jsonStr) throws JSONException {
-
-		JSONObject jsonPerson = new JSONObject(jsonStr);
-
-		String name = jsonPerson.getString("name");
-		String gender = jsonPerson.getString("gender");
-		String firstName = jsonPerson.getString("firstName");
-		String lastName = jsonPerson.getString("lastName");
-		String dateOfBirth = jsonPerson.getString("dateOfBirth");
-		String dateOfDeath = jsonPerson.getString("dateOfDeath");
-		Boolean isAlive = jsonPerson.getBoolean("isAlive");
-
-		Person person = new Person(name);
-		person.setGender(gender);
-		person.setFirstName(firstName);
-		person.setLastName(lastName);
-		person.setDateOfBirth(dateOfBirth);
-		person.setDateOfDeath(dateOfDeath);
-		person.setIsAlive(isAlive);
-
-		return person;
-	}
-
-
-
 	public static Person getPersonFromJsonString(JSONObject jsonPerson) throws JSONException {
 
 		String name = jsonPerson.getString("name");
@@ -252,6 +168,17 @@ public final class PersonUtil {
 	}
 
 
+
+	/**
+	 * Writes the relationship between the {@link Person} nodes in format.
+	 * (Person1) >> [RelationShip] >> (Person2)
+	 * @param sbTop
+	 * @param relationMap
+	 * @param relationKey
+	 * @param nextNode
+	 * @return strRelationship
+	 * @throws JSONException
+	 */
 	public static String strRelationship(String sbTop, JSONObject relationMap, String relationKey, Person nextNode)
 			throws JSONException {
 		StringBuilder sb = new StringBuilder(sbTop);
@@ -261,6 +188,29 @@ public final class PersonUtil {
 		sb.append("(").append(nextNode.getName()).append(":").append(nextNode.getGender()).append(")");
 
 		return sb.toString();
+	}
+
+
+	/**
+	 * Saves the person in the database using the given respository.
+	 * @param person
+	 * @param personNode
+	 * @param personRepository
+	 * @return person
+	 */
+	public static Person savePerson(Person person, Person personNode, PersonRepository personRepository) {
+		if(personNode==null) {
+			personRepository.save(person);
+			return personRepository.findByName(person.getName());
+		}
+		else {
+			if(person.jsonString().length() > personNode.jsonString().length()) {
+				setAttributeFromPerson(personNode, person);
+				personRepository.save(personNode);
+			}
+			personNode.setRelation(person.getRelation());
+			return personNode;
+		}
 	}
 
 
@@ -333,6 +283,12 @@ public final class PersonUtil {
 
 
 
+	/**
+	 * Merges all the related users.
+	 * 
+	 * @param node
+	 * @return
+	 */
 	public static Set<Person> mergeRelations(Person node) {
 		Set<Person> fatherOf = node.getFatherOf();
 		Set<Person> motherOf = node.getMotherOf();
