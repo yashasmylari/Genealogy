@@ -1,0 +1,389 @@
+package genealogy.util;
+
+import static genealogy.constants.Relations.*;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import genealogy.dao.PersonRepository;
+import genealogy.dto.*;
+import genealogy.struct.RelatedPerson;
+
+public final class PersonUtil {
+
+	private PersonUtil() { }
+
+
+	/**
+	 * Returns the DTO towards the upper node (Parent)
+	 * @param person
+	 * @return person
+	 */
+	public static Person getParentRelation(Person person) {
+		String g = person.getGender().toUpperCase();
+		person.setGender(g);
+
+		switch(g) {
+			case "MALE" :
+				return person.setRelation(FATHER_OF);
+			case "FEMALE" :
+				return person.setRelation(MOTHER_OF);
+		}
+		return person;
+	}
+
+
+	/**
+	 * Returns the DTO towards the lower node (Child)
+	 * @param person
+	 * @return person
+	 */
+	public static Person getChildRelation(Person person) {
+		String g = person.getGender().toUpperCase();
+		person.setGender(g);
+
+		switch(g) {
+			case "MALE" :
+				return person.setRelation(SON_OF);
+			case "FEMALE" :
+				return person.setRelation(DAUGHTER_OF);
+		}
+		return person;
+	}
+
+
+	/**
+	 * Returns the DTO towards the upper and lower node
+	 * @param person1
+	 * @param relation
+	 * @param person2
+	 * @return relatedPerson
+	 */
+	public static RelatedPerson<Person, Person> getPerson(Person person1, String relation, Person person2) {
+		if(relation==null)
+			return null;
+
+		String rel = relation.toUpperCase();
+
+		switch(rel) {
+			case MARRIED :
+				return new RelatedPerson<Person, Person>(person1.setRelation(MARRIED_TO), person2.setRelation(MARRIED_TO));
+			case FRIEND :
+				return new RelatedPerson<Person, Person>(person1.setRelation(FRIENDS_WITH), person2.setRelation(FRIENDS_WITH));
+			// Person 1 >> Parent of >> Person 2
+			case PARENT :
+				return new RelatedPerson<Person, Person>(getParentRelation(person1), getChildRelation(person2));
+			// Person 1 >> Child of >> Person 2
+			case CHILD :
+				return new RelatedPerson<Person, Person>(getChildRelation(person1), getParentRelation(person2));
+			// Person 1 >> Blood Relative of >> Person 2
+			case BLOOD_RELATIVE :
+				return new RelatedPerson<Person, Person>(person1, person2);
+			// Person 1 >> Related to >> Person 2
+			default :
+				return new RelatedPerson<Person, Person>(person1, person2);
+		}
+	}
+
+
+	/**
+	 * Saves the person in the database using the given respository.
+	 * @param person
+	 * @param personNode
+	 * @param personRepository
+	 * @return person
+	 */
+	public static Person savePerson(Person person, Person personNode, PersonRepository personRepository) {
+		if(personNode==null) {
+			personRepository.save(person);
+			return personRepository.findByName(person.getName());
+		}
+		else {
+			if(person.jsonString().length() > personNode.jsonString().length()) {
+				setAttributeFromPerson(personNode, person);
+				personRepository.save(personNode);
+			}
+			personNode.setRelation(person.getRelation());
+			return personNode;
+		}
+	}
+
+
+	/**
+	 * Saves the person in the database using the given repository.
+	 * @param person
+	 * @param personNode
+	 * @param personRepository
+	 * @return person
+	 */
+	public static Person savePersonRelationship(Person person, Person personNode, Person personNodeRelated, PersonRepository personRepository) {
+		Person tempPerson;
+
+		if(personNode==null) {
+			tempPerson = person;
+		}
+		else {
+			if(person.jsonString().length() > personNode.jsonString().length()) {
+				setAttributeFromPerson(personNode, person);
+				personRepository.save(personNode);
+			}
+			tempPerson = personNode;
+			tempPerson.setRelation(person.getRelation());
+		}
+
+		tempPerson.setRelationShip(personNodeRelated);
+		personNodeRelated.setRelationShip(tempPerson);
+
+		String relation1 = tempPerson.getRelation();
+		String relation2 = personNodeRelated.getRelation();
+
+		tempPerson.setRelation(null);
+		personNodeRelated.setRelation(null);
+
+		personNode = personRepository.save(tempPerson);
+
+		// The relationship with the other node is working, hence commented the below code
+		personRepository.save(personNodeRelated);
+
+		personNode.setRelation(relation1);
+		personNodeRelated.setRelation(relation2);
+
+		return personNode;
+	}
+
+
+	public static Person getPersonFromJsonString(String jsonStr) throws JSONException {
+
+		JSONObject jsonPerson = new JSONObject(jsonStr);
+
+		String name = jsonPerson.getString("name");
+		String gender = jsonPerson.getString("gender");
+		String firstName = jsonPerson.getString("firstName");
+		String lastName = jsonPerson.getString("lastName");
+		String dateOfBirth = jsonPerson.getString("dateOfBirth");
+		String dateOfDeath = jsonPerson.getString("dateOfDeath");
+		Boolean isAlive = jsonPerson.getBoolean("isAlive");
+
+		Person person = new Person(name);
+		person.setGender(gender);
+		person.setFirstName(firstName);
+		person.setLastName(lastName);
+		person.setDateOfBirth(dateOfBirth);
+		person.setDateOfDeath(dateOfDeath);
+		person.setIsAlive(isAlive);
+
+		return person;
+	}
+
+
+
+	public static Person getPersonFromJsonString(JSONObject jsonPerson) throws JSONException {
+
+		String name = jsonPerson.getString("name");
+		String gender = jsonPerson.getString("gender");
+
+		Person person = new Person(name);
+		person.setGender(gender);
+
+		// First Name
+		try { person.setFirstName(jsonPerson.getString("firstName")); }
+		catch(Exception ex) { System.err.println("First Name not defined for >> " + name); }
+
+		// Last Name
+		try { person.setLastName(jsonPerson.getString("lastName")); }
+		catch(Exception ex) { System.err.println("Last Name not defined for >> " + name); }
+
+		// Date Of Birth
+		try { person.setDateOfBirth(jsonPerson.getString("dateOfBirth")); }
+		catch(Exception ex) { System.err.println("Date Of Birth not defined for >> " + name); }
+
+		// Is Alive
+		try { person.setIsAlive(jsonPerson.getBoolean("isAlive")); }
+		catch(Exception ex) { System.err.println("Is Alive not defined for >> " + name); }
+
+		// Date Of Death
+		try { person.setDateOfDeath(jsonPerson.getString("dateOfDeath")); }
+		catch(Exception ex) { System.err.println("Date Of Death not defined for >> " + name); }
+
+		// Region
+		try { person.setRegion(jsonPerson.getString("region")); }
+		catch(Exception ex) { System.err.println("Last Name not defined for >> " + name); }
+
+		// Language
+		try { person.setLanguage(jsonPerson.getString("language")); }
+		catch(Exception ex) { System.err.println("Language not defined for >> " + name); }
+
+		// Religion
+		try { person.setReligion(jsonPerson.getString("religion")); }
+		catch(Exception ex) { System.err.println("Religion not defined for >> " + name); }
+
+		// Clan
+		try { person.setClan(jsonPerson.getString("clan")); }
+		catch(Exception ex) { System.err.println("Clan not defined for >> " + name); }
+
+		// Ethinicity
+		try { person.setEthinicity(jsonPerson.getString("ethinicity")); }
+		catch(Exception ex) { System.err.println("Ethinicity not defined for >> " + name); }
+
+		// Occupation
+		try { person.setOccupation(jsonPerson.getString("occupation")); }
+		catch(Exception ex) { System.err.println("Occupation not defined for >> " + name); }
+
+		// Physical Traits
+		try { person.setPhysicalTraits(jsonPerson.getString("physicalTraits")); }
+		catch(Exception ex) { System.err.println("Physical Traits not defined for >> " + name); }
+
+		// Education
+		try { person.setEducation(jsonPerson.getString("education")); }
+		catch(Exception ex) { System.err.println("Education not defined for >> " + name); }
+
+		// Medical Condition
+		try { person.setMedicalCondition(jsonPerson.getString("medicalCondition")); }
+		catch(Exception ex) { System.err.println("Medical Condition not defined for >> " + name); }
+
+		// Special Characteristic
+		try { person.setSpecialCharacteristic(jsonPerson.getString("specialCharacteristic")); }
+		catch(Exception ex) { System.err.println("Special Characteristic not defined for >> " + name); }
+
+		return person;
+	}
+
+
+	public static String strRelationship(String sbTop, JSONObject relationMap, String relationKey, Person nextNode)
+			throws JSONException {
+		StringBuilder sb = new StringBuilder(sbTop);
+		// Set Relation
+		String rel = relationMap.getString(relationKey);
+		sb.append(" >> [").append(rel).append("] >> ");
+		sb.append("(").append(nextNode.getName()).append(":").append(nextNode.getGender()).append(")");
+
+		return sb.toString();
+	}
+
+
+
+	public static String searchRelationShip(RelatedPerson<Person, Person> nodes, JSONObject jsonRelation, String prevNodeRelations, int count,
+			PersonRepository personRepository, Set<String> scannedNodes, Set<String> searchedNodes)
+					throws JSONException {
+
+		Person node = nodes.getP1();
+		Person nextNode = nodes.getP2();
+
+		Set<Person> relationSet = mergeRelations(node);
+
+		for(Person personRel : relationSet) {
+			String searched = personRel.toString();
+			if(searchedNodes.contains(searched))
+				continue;
+
+			String relationKey = node.getName()+"-"+personRel.getName();
+			String rel = jsonRelation.getString(relationKey);
+
+			// Set Previous Relation
+			StringBuilder sbPrev = new StringBuilder(prevNodeRelations);
+			sbPrev.append(" >> [").append(rel).append("] >> ");
+			sbPrev.append("(").append(personRel.getName()).append(":").append(personRel.getGender()).append(")");
+
+			String relationMapSon = personRel.getRelationMap();
+			String relationKeySon = personRel.getName()+"-"+nextNode.getName();
+			JSONObject jsonChildRelation = new JSONObject(relationMapSon);
+
+			if(jsonChildRelation.has(relationKeySon))
+				return PersonUtil.strRelationship(sbPrev.toString(), jsonChildRelation, relationKeySon, nextNode);
+
+			searchedNodes.add(searched);
+		}
+
+
+		if(count>5) {
+			return "";
+		}
+
+		for(Person personRel : relationSet) {
+
+			String scanned = personRel.toString();
+			if(scannedNodes.contains(scanned))
+				continue;
+
+			String relationKey = node.getName()+"-"+personRel.getName();
+			String rel = jsonRelation.getString(relationKey);
+
+			// Set Previous Relation
+			StringBuilder sbPrev = new StringBuilder(prevNodeRelations);
+			sbPrev.append(" >> [").append(rel).append("] >> ");
+			sbPrev.append("(").append(personRel.getName()).append(":").append(personRel.getGender()).append(")");
+
+			String relationMapSon = personRel.getRelationMap();
+			JSONObject jsonChildRelation = new JSONObject(relationMapSon);
+
+			Person personRelDb = personRepository.findByName(personRel.getName());
+			scannedNodes.add(scanned);
+			RelatedPerson<Person, Person> relatedPerson = new RelatedPerson<Person, Person>(personRelDb, nextNode);
+			String relation = PersonUtil.searchRelationShip(relatedPerson, jsonChildRelation, sbPrev.toString(), ++count, personRepository, scannedNodes, searchedNodes);
+
+			if(!relation.isEmpty())
+				return relation;
+		}
+
+		return "";
+	}
+
+
+
+	public static Set<Person> mergeRelations(Person node) {
+		Set<Person> fatherOf = node.getFatherOf();
+		Set<Person> motherOf = node.getMotherOf();
+		Set<Person> sonOf = node.getSonOf();
+		Set<Person> daughterOf = node.getDaughterOf();
+		Set<Person> friendsWith = node.getFriendsWith();
+		Person marriedTo = node.getMarriedTo();
+
+		Set<Person> relationSet = new HashSet<>(fatherOf.size() + motherOf.size() + sonOf.size() + daughterOf.size() + friendsWith.size());
+		relationSet.add(marriedTo);
+		relationSet.addAll(fatherOf);
+		relationSet.addAll(motherOf);
+		relationSet.addAll(sonOf);
+		relationSet.addAll(daughterOf);
+		relationSet.addAll(friendsWith);
+
+		relationSet.remove(node);
+		relationSet.remove(null);
+
+		return relationSet;
+	}
+
+
+
+	/**
+	 * Sets the Person attribute values from one person object to the another.
+	 * @param personTo {@link PersonAttributes}
+	 * @param personFrom  {@link PersonAttributes}
+	 */
+	public static void setAttributeFromPerson(PersonAttributes personTo, PersonAttributes personFrom) {
+		personTo.setGender(personFrom.getGender());
+		try {
+			personTo.setFirstName(personFrom.getFirstName());
+			personTo.setLastName(personFrom.getLastName());
+			personTo.setDateOfBirth(personTo.getDateOfBirth());
+			personTo.setDateOfDeath(personTo.getDateOfDeath());
+			personTo.setIsAlive(personTo.getIsAlive());
+			personTo.setRegion(personTo.getRegion());
+			personTo.setLanguage(personTo.getLanguage());
+			personTo.setReligion(personTo.getReligion());
+			personTo.setClan(personTo.getClan());
+			personTo.setEthinicity(personTo.getEthinicity());
+			personTo.setOccupation(personTo.getOccupation());
+			personTo.setPhysicalTraits(personTo.getPhysicalTraits());
+			personTo.setEducation(personTo.getEducation());
+			personTo.setMedicalCondition(personTo.getMedicalCondition());
+			personTo.setSpecialCharacteristic(personTo.getSpecialCharacteristic());
+		}
+		catch(Exception ex) {
+			System.err.println("Attributes not set "+ex.getMessage());
+		}
+
+	}
+}
