@@ -191,8 +191,24 @@ public class Person extends PersonAttributes {
 	public String jsonString() {
 		JSONObject jsonObject = new JSONObject();
 		try {
-			jsonObject.put("name", id);
+			jsonObject.put("id", id);
 			jsonObject.put("name", name);
+			jsonObject.put("firstName", firstName);
+			jsonObject.put("lastName", lastName);
+			jsonObject.put("dateOfBirth", dateOfBirth);
+			jsonObject.put("placeOfBirth", placeOfBirth);
+			jsonObject.put("isAlive", isAlive);
+			jsonObject.put("dateOfDeath", dateOfDeath);
+			jsonObject.put("region", region);
+			jsonObject.put("language", language);
+			jsonObject.put("religion", religion);
+			jsonObject.put("clan", clan);
+			jsonObject.put("ethinicity", ethinicity);
+			jsonObject.put("occupation", occupation);
+			jsonObject.put("physicalTraits", physicalTraits);
+			jsonObject.put("education", education);
+			jsonObject.put("medicalCondition", medicalCondition);
+			jsonObject.put("specialCharacteristic", specialCharacteristic);
 			// ALOKA >> Format this
 		} catch (JSONException e) {
 			e.printStackTrace();
