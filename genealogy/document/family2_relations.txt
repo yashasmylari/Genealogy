@@ -1,0 +1,17 @@
+[
+	{
+		"person1" : "Jake",
+		"person2" : "Jane",
+		"relation" : "married"
+	},
+	{
+		"person1" : "Jake",
+		"person2" : "Gary",
+		"relation" : "parent"
+	},
+	{
+		"person1" : "Gary",
+		"person2" : "Jane",
+		"relation" : "child"
+	}
+]

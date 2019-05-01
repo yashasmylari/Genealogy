@@ -1,0 +1,57 @@
+[
+	{
+		"person1" : "Jack",
+		"person2" : "Kate",
+		"relation" : "married"
+	},
+	{
+		"person1" : "Jack",
+		"person2" : "Diana",
+		"relation" : "parent"
+	},
+	{
+		"person1" : "Diana",
+		"person2" : "Kate",
+		"relation" : "child"
+	},
+	{
+		"person1" : "Edward",
+		"person2" : "Diana",
+		"relation" : "married"
+	},
+	{
+		"person1" : "Greg",
+		"person2" : "Diana",
+		"relation" : "child"
+	},
+	{
+		"person1" : "Edward",
+		"person2" : "Greg",
+		"relation" : "parent"
+	},
+	{
+		"person1" : "Angelina",
+		"person2" : "Greg",
+		"relation" : "married"
+	},
+	{
+		"person1" : "Roy",
+		"person2" : "Greg",
+		"relation" : "child"
+	},
+	{
+		"person1" : "Roy",
+		"person2" : "Angelina",
+		"relation" : "child"
+	},
+	{
+		"person1" : "Rita",
+		"person2" : "Greg",
+		"relation" : "child"
+	},
+	{
+		"person1" : "Rita",
+		"person2" : "Angelina",
+		"relation" : "child"
+	}
+]

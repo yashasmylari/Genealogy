@@ -1,0 +1,29 @@
+[
+	{
+		"name" : "Jake",
+		"gender": "male",
+		"firstName": "Jake",
+		"lastName": "Robbertson",
+		"dateOfBirth": "11.12.1973",
+		"dateOfDeath": "",
+		"isAlive": true
+	},
+	{
+		"name" : "Jane",
+		"gender": "female",
+		"firstName": "Jane",
+		"lastName": "Robbertson",
+		"dateOfBirth": "07.06.1998",
+		"dateOfDeath": "",
+		"isAlive": false
+	},
+	{
+		"name" : "Gary",
+		"gender": "male",
+		"firstName": "Gary",
+		"lastName": "Robbertson",
+		"dateOfBirth": "07.06.1998",
+		"dateOfDeath": "",
+		"isAlive": true
+	}
+]

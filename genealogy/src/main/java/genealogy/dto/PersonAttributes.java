@@ -125,13 +125,4 @@ public class PersonAttributes {
 		this.specialCharacteristic = specialCharacteristic;
 	}
 
-	public String jsonString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append(name).append(gender).append(firstName).append(lastName).append(dateOfBirth);
-		sb.append(dateOfDeath).append(isAlive).append(region).append(language);
-		sb.append(religion).append(clan).append(ethinicity).append(occupation);
-		sb.append(physicalTraits).append(education).append(medicalCondition).append(specialCharacteristic);
-		return sb.toString();
-	}
-
 }

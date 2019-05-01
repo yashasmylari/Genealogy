@@ -1,0 +1,74 @@
+[
+	{
+		"name" : "Kate",
+		"gender": "female",
+		"firstName": "Kate",
+		"lastName": "Daniels",
+		"dateOfBirth": "12.06.1934",
+		"dateOfDeath": "02.08.1995",
+		"isAlive": false
+	},
+	{
+		"name" : "Jack",
+		"gender": "male",
+		"firstName": "Jack",
+		"lastName": "Daniels",
+		"dateOfBirth": "12.06.1932",
+		"dateOfDeath": "08.09.2003",
+		"isAlive": false
+	},
+	{
+		"name" : "Diana",
+		"gender": "female",
+		"firstName": "Diana",
+		"lastName": "Reynolds",
+		"dateOfBirth": "12.06.1955",
+		"dateOfDeath": "",
+		"isAlive": true
+	},
+	{
+		"name" : "Edward",
+		"gender": "male",
+		"firstName": "Edward",
+		"lastName": "Reynolds",
+		"dateOfBirth": "12.06.1952",
+		"dateOfDeath": "",
+		"isAlive": true
+	},
+	{
+		"name" : "Greg",
+		"gender": "male",
+		"firstName": "Greg",
+		"lastName": "Reynolds",
+		"dateOfBirth": "12.06.1975",
+		"dateOfDeath": "",
+		"isAlive": true
+	},
+	{
+		"name" : "Angelina",
+		"gender": "female",
+		"firstName": "Angelina",
+		"lastName": "Reynolds",
+		"dateOfBirth": "12.06.1973",
+		"dateOfDeath": "",
+		"isAlive": true
+	},
+	{
+		"name" : "Rita",
+		"gender": "female",
+		"firstName": "Rita",
+		"lastName": "Daniels",
+		"dateOfBirth": "12.06.1995",
+		"dateOfDeath": "",
+		"isAlive": true
+	},
+	{
+		"name" : "Roy",
+		"gender": "male",
+		"firstName": "Roy",
+		"lastName": "Daniels",
+		"dateOfBirth": "12.06.1999",
+		"dateOfDeath": "",
+		"isAlive": true
+	}
+]

@@ -26,24 +26,37 @@ public class PersonServiceImpl implements PersonService {
 
 
 	@Override
-	public boolean relatePerson(RelatedPerson<Person, Person> relatedPerson) {
+	public RelatedPerson<Person, Person> relatePerson(String person1, String person2, String relation) {
 		try {
-			Person p1 = personRepository.findByName(relatedPerson.getP1().getName());
-			Person p2 = personRepository.findByName(relatedPerson.getP2().getName());
+			if(relation==null || relation.length()==0)
+				return null;
+
+			Person p1 = personRepository.findByName(person1);
+			Person p2 = personRepository.findByName(person2);
+
+			if(p1==null || p2==null)
+				return null;
+
+			RelatedPerson<Person, Person> relatedPerson = PersonUtil.getPersonRelation(p1, p2, relation);
+
+			p1 = relatedPerson.getP1();
+			p2 = relatedPerson.getP2();
 
 			p1.setRelationShip(p2);
 			p2.setRelationShip(p1);
 
+			relatedPerson.generateRelationship();
+			p1.setRelationShip(null);
+			p2.setRelationShip(null);
+
 			personRepository.save(p1);
 			personRepository.save(p2);
 
-			relatedPerson.getP1().setRelationShip(relatedPerson.getP2().setRelationShip(relatedPerson.getP1()));
-
-			return true;
+			return relatedPerson;
 		}
 		catch(Exception ex) {
 			log.error("An error occurred while related person", ex);
-			return false;
+			return null;
 		}
 	}
 
@@ -57,10 +70,19 @@ public class PersonServiceImpl implements PersonService {
 	@Override
 	public Person addPerson(JSONObject person) {
 		try {
-			Person p1 = PersonUtil.getPersonFromJsonString(person);
-			String nameP1 = p1.getName();
-			Person pb1 = personRepository.findByName(nameP1);
-			return pb1 = PersonUtil.savePerson(p1, pb1, personRepository);
+			String name = person.getString("name");
+			Person pb = personRepository.findByName(name);
+			Person p = PersonUtil.getPersonFromJsonString(person);
+			if(pb==null) {
+				personRepository.save(p);
+				return personRepository.findByName(name);
+			}
+			else {
+				Person personNode = PersonUtil.setAttributeFromPerson(p, pb);
+				if(personNode!=null)
+					personRepository.save(personNode);
+				return personNode;
+			}
 		}
 		catch(Exception ex) {
 			log.error("An error occurred while related person", ex);

@@ -146,6 +146,11 @@ public class Person extends PersonAttributes {
 
 	// Set Relationship
 	public Person setRelationShip(Person person) {
+		if(person==null) {
+			relation = null;
+			return this;
+		}
+			
 		try {
 			String key = new StringBuilder(name).append("-").append(person.name).toString();
 			relationMap = new JSONObject(relationMap).put(key, relation).toString();
@@ -153,8 +158,10 @@ public class Person extends PersonAttributes {
 		catch (JSONException e) {
 			e.printStackTrace();
 		}
+
 		// Relate
 		relatedTo.add(person);
+
 		// Add Relationship
 		if(FATHER_OF.equals(relation))
 			fatherOf.add(person);
@@ -179,4 +186,22 @@ public class Person extends PersonAttributes {
 		return relationMap;
 	}
 
+
+
+	public String jsonString() {
+		JSONObject jsonObject = new JSONObject();
+		try {
+			jsonObject.put("name", id);
+			jsonObject.put("name", name);
+			// ALOKA >> Format this
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		StringBuilder sb = new StringBuilder();
+		sb.append(name).append(gender).append(firstName).append(lastName).append(dateOfBirth);
+		sb.append(dateOfDeath).append(isAlive).append(region).append(language);
+		sb.append(religion).append(clan).append(ethinicity).append(occupation);
+		sb.append(physicalTraits).append(education).append(medicalCondition).append(specialCharacteristic);
+		return sb.toString();
+	}
 }

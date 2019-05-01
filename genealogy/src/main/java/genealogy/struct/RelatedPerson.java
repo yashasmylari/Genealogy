@@ -6,6 +6,7 @@ public class RelatedPerson<P1 extends Person, P2 extends Person> {
 
 	private P1 p1;
 	private P2 p2;
+	private String relation;
 
 	public RelatedPerson()  {}
 
@@ -30,20 +31,26 @@ public class RelatedPerson<P1 extends Person, P2 extends Person> {
 		return this;
 	}
 
+	public void generateRelationship() {
+		relation = toString();
+	}
+
 	@Override
 	public String toString() {
-		return new StringBuilder()
+		return relation!=null ? relation :
+				new StringBuilder("{{") 
 				.append(p1.getName())
 				.append(" >> ")
 				.append(p1.getRelation())
 				.append(" >> ")
 				.append(p2.getName())
-				.append("\n")
+				.append(" || ")
 				.append(p1.getName())
 				.append(" << ")
 				.append(p2.getRelation())
 				.append(" << ")
 				.append(p2.getName())
+				.append("}}")
 				.toString();
 	}
 

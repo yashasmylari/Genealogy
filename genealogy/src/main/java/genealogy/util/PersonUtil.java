@@ -58,11 +58,11 @@ public final class PersonUtil {
 	/**
 	 * Returns the DTO towards the upper and lower node
 	 * @param person1
-	 * @param relation
 	 * @param person2
+	 * @param relation
 	 * @return relatedPerson
 	 */
-	public static RelatedPerson<Person, Person> getPerson(Person person1, String relation, Person person2) {
+	public static RelatedPerson<Person, Person> getPersonRelation(Person person1, Person person2, String relation) {
 		if(relation==null)
 			return null;
 
@@ -99,10 +99,12 @@ public final class PersonUtil {
 	public static Person getPersonFromJsonString(JSONObject jsonPerson) throws JSONException {
 
 		String name = jsonPerson.getString("name");
-		String gender = jsonPerson.getString("gender");
 
 		Person person = new Person(name);
-		person.setGender(gender);
+
+		// Gender
+		try { person.setGender(jsonPerson.getString("gender")); }
+		catch(Exception ex) { System.err.println("Gender not defined for >> " + name); }
 
 		// First Name
 		try { person.setFirstName(jsonPerson.getString("firstName")); }
@@ -126,7 +128,7 @@ public final class PersonUtil {
 
 		// Region
 		try { person.setRegion(jsonPerson.getString("region")); }
-		catch(Exception ex) { System.err.println("Last Name not defined for >> " + name); }
+		catch(Exception ex) { System.err.println("Region not defined for >> " + name); }
 
 		// Language
 		try { person.setLanguage(jsonPerson.getString("language")); }
@@ -188,29 +190,6 @@ public final class PersonUtil {
 		sb.append("(").append(nextNode.getName()).append(":").append(nextNode.getGender()).append(")");
 
 		return sb.toString();
-	}
-
-
-	/**
-	 * Saves the person in the database using the given respository.
-	 * @param person
-	 * @param personNode
-	 * @param personRepository
-	 * @return person
-	 */
-	public static Person savePerson(Person person, Person personNode, PersonRepository personRepository) {
-		if(personNode==null) {
-			personRepository.save(person);
-			return personRepository.findByName(person.getName());
-		}
-		else {
-			if(person.jsonString().length() > personNode.jsonString().length()) {
-				setAttributeFromPerson(personNode, person);
-				personRepository.save(personNode);
-			}
-			personNode.setRelation(person.getRelation());
-			return personNode;
-		}
 	}
 
 
@@ -315,30 +294,83 @@ public final class PersonUtil {
 
 	/**
 	 * Sets the Person attribute values from one person object to the another.
-	 * @param personTo {@link PersonAttributes}
-	 * @param personFrom  {@link PersonAttributes}
+	 * @param person {@link PersonAttributes}
+	 * @param personNode  {@link PersonAttributes}
 	 */
-	public static void setAttributeFromPerson(PersonAttributes personTo, PersonAttributes personFrom) {
-		personTo.setGender(personFrom.getGender());
+	public static Person setAttributeFromPerson(Person person, Person personNode) {
 		try {
-			personTo.setFirstName(personFrom.getFirstName());
-			personTo.setLastName(personFrom.getLastName());
-			personTo.setDateOfBirth(personTo.getDateOfBirth());
-			personTo.setDateOfDeath(personTo.getDateOfDeath());
-			personTo.setIsAlive(personTo.getIsAlive());
-			personTo.setRegion(personTo.getRegion());
-			personTo.setLanguage(personTo.getLanguage());
-			personTo.setReligion(personTo.getReligion());
-			personTo.setClan(personTo.getClan());
-			personTo.setEthinicity(personTo.getEthinicity());
-			personTo.setOccupation(personTo.getOccupation());
-			personTo.setPhysicalTraits(personTo.getPhysicalTraits());
-			personTo.setEducation(personTo.getEducation());
-			personTo.setMedicalCondition(personTo.getMedicalCondition());
-			personTo.setSpecialCharacteristic(personTo.getSpecialCharacteristic());
+			boolean attributeSet = false;
+			if(person.getGender()!=null) {
+				personNode.setGender(person.getGender());
+				attributeSet = true;
+			}
+			if(person.getFirstName()!=null) {
+				personNode.setFirstName(person.getFirstName());
+				attributeSet = true;
+			}
+			if(person.getLastName()!=null) {
+				personNode.setLastName(person.getLastName());
+				attributeSet = true;
+			}
+			if(person.getDateOfBirth()!=null) {
+				personNode.setDateOfBirth(person.getDateOfBirth());
+				attributeSet = true;
+			}
+			if(person.getDateOfDeath()!=null) {
+				personNode.setDateOfDeath(person.getDateOfDeath());
+				attributeSet = true;
+			}
+			if(person.getIsAlive()!=null) {
+				personNode.setIsAlive(person.getIsAlive());
+				attributeSet = true;
+			}
+			if(person.getRegion()!=null) {
+				personNode.setRegion(person.getRegion());
+				attributeSet = true;
+			}
+			if(person.getLanguage()!=null) {
+				personNode.setLanguage(person.getLanguage());
+				attributeSet = true;
+			}
+			if(person.getReligion()!=null) {
+				personNode.setReligion(person.getReligion());
+				attributeSet = true;
+			}
+			if(person.getClan()!=null) {
+				personNode.setClan(person.getClan());
+				attributeSet = true;
+			}
+			if(person.getEthinicity()!=null) {
+				personNode.setEthinicity(person.getEthinicity());
+				attributeSet = true;
+			}
+			if(person.getOccupation()!=null) {
+				personNode.setOccupation(person.getOccupation());
+				attributeSet = true;
+			}
+			if(person.getPhysicalTraits()!=null) {
+				personNode.setPhysicalTraits(person.getPhysicalTraits());
+				attributeSet = true;
+			}
+			if(person.getEducation()!=null) {
+				personNode.setEducation(person.getEducation());
+				attributeSet = true;
+			}
+			if(person.getMedicalCondition()!=null) {
+				personNode.setMedicalCondition(person.getMedicalCondition());
+				attributeSet = true;
+			}
+			if(person.getSpecialCharacteristic()!=null) {
+				personNode.setSpecialCharacteristic(person.getSpecialCharacteristic());
+				attributeSet = true;
+			}
+			if(attributeSet)
+				return personNode;
+			return null;
 		}
 		catch(Exception ex) {
 			System.err.println("Attributes not set "+ex.getMessage());
+			return null;
 		}
 
 	}

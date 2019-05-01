@@ -9,9 +9,9 @@ public interface PersonService {
 
 	void deleteAll();
 
-	Person addPerson(JSONObject person);
+	RelatedPerson<Person, Person> relatePerson(String person1, String person2, String relation);
 
-	boolean relatePerson(RelatedPerson<Person, Person> relatedPerson);
+	Person addPerson(JSONObject person);
 
 	String findRelation(String person1, String person2);
 
