@@ -53,6 +53,17 @@ RETURN k,r,l
 
 // User Story #5
 
+// Migration Country name
+MATCH (k:Person)-[r:FATHER_OF | MOTHER_OF *1..7 ]-(l:Person)
+WHERE k.name = "Jason Smith" AND
+	ANY (x IN k.locations WHERE x =~ ".*Germany.*" /*"(?i).*Germany.*" IN x*/ )
+RETURN k, r, l,  k.locations
+
+// Medical Treatment
+MATCH (k:Person)-[r:FATHER_OF | MOTHER_OF *1..7 ]-(l:Person)
+WHERE k.name = "Jason Smith" AND
+	ANY (x IN k.locations WHERE x =~ ".*Education.*" /*"(?i).*Germany.*" IN x*/ )
+RETURN k, r, l,  k.locations
 
 
 // To find the relationship

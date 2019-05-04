@@ -1,0 +1,90 @@
+
+[
+	{
+		"name" : "Caroline Smith",
+		"gender": "female",
+		"firstName": "Caroline",
+		"lastName": "Smith",
+		"dateOfBirth": "11.06.1924",
+		"placeOfBirth": "Texas" ,
+		"dateOfDeath": "01.08.1995",
+		"isAlive": false,
+		"community": "",
+		"clan": "Macpherson",
+		"language": ["English"],
+		"nationality": "American" ,
+		"religion": "Christian",
+		"residence": "Heidelberg",
+		"locations": [
+			"||Texas,USA||1924-1954||Born||",
+			"||California,USA||1954-1964||Employment||",
+			"||Heidelberg,Germany||1964-1995||Marriage||"
+		]
+	},
+	
+	{
+		"name" : "Nelson Smith",
+		"gender": "Male",
+		"firstName": "Nelson",
+		"lastName": "Smith",
+		"dateOfBirth": "17.08.1922",
+		"placeOfBirth": "Heidelberg" ,
+		"dateOfDeath": "08.03.2000",
+		"isAlive": false,
+		"community": "",
+		"clan": "Macpherson",
+		"language": ["English","Dutch","German"],
+		"nationality": "Dutch" ,
+		"religion": "Christian",
+		"residence": "Heidelberg",	
+		"locations": [
+			"||Amsterdam,Netherlands||1922-1945||Born||",
+			"||California,USA||1945-1964||Employment||",
+			"||Heidelberg,Germany||1964-2000||Employment||"
+		]
+	},
+	
+	
+	{
+		"name" : "Anna",
+		"gender": "female",
+		"firstName": "Anna",
+		"lastName": "Smith",
+		"dateOfBirth": "11.06.1993",
+		"placeOfBirth": "Heidelberg" ,
+		"dateOfDeath": "",
+		"isAlive": false,
+		"community": "",
+		"clan": "Macpherson",
+		"language": ["English","German"],
+		"nationality": "German" ,
+		"religion": "Christian",
+		"residence": "salzburg",	
+		"locations": [
+			"||Heidelberg,Germany||1993-2013||Born||",
+			"||Salzburg,Austria||2013-till present||Education||"
+		]
+	},
+	
+	{
+		"name" : "Jason Smith",
+		"gender": "male",
+		"firstName": "Jason",
+		"lastName": "Smith",
+		"dateOfBirth": "11.06.1989",
+		"placeOfBirth": "Heidelberg",
+		"dateOfDeath": "",
+		"isAlive": false,
+		"community": "",
+		"clan": "Macpherson",
+		"language": ["English","German"],
+		"nationality": "German" ,
+		"religion": "Christian",
+		"residence": "Heidelberg",
+		"locations": [
+			"||Heidelberg,Germany||1989-2015||B||",
+			"||Berlin,Germany||2015-2017||Education||",
+			"||Heidelberg,Germany||2017-till present||Medical Treatment||"]
+	}
+
+]

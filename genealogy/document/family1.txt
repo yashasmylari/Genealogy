@@ -7,6 +7,7 @@
 		"dateOfBirth": "12.06.1934",
 		"dateOfDeath": "02.08.1995",
 		"isAlive": false,
+		"clan": "",
 		"medicalCondition": ["Asthma","Color Blindness","Breast Cancer"]
 	},
 	{
@@ -16,6 +17,7 @@
 		"lastName": "Daniels",
 		"dateOfBirth": "12.06.1932",
 		"dateOfDeath": "08.09.2003",
+		"clan": "Macpherson",
 		"isAlive": false
 	},
 	{
@@ -26,6 +28,7 @@
 		"dateOfBirth": "12.06.1955",
 		"dateOfDeath": "",
 		"isAlive": true,
+		"clan": "Macpherson",
 		"medicalCondition": ["Asthma","Color Blindness","Breast Cancer"]
 	},
 	{
@@ -35,7 +38,8 @@
 		"lastName": "Reynolds",
 		"dateOfBirth": "12.06.1952",
 		"dateOfDeath": "",
-		"isAlive": true
+		"isAlive": true,
+		"clan": "Macpherson"
 	},
 	{
 		"name" : "Greg",
@@ -45,6 +49,7 @@
 		"dateOfBirth": "12.06.1975",
 		"dateOfDeath": "",
 		"isAlive": true,
+		"clan": "Macpherson",
 		"medicalCondition": ["Asthma","Color Blindness","Blood Pressure"]
 	},
 	{
@@ -54,7 +59,8 @@
 		"lastName": "Reynolds",
 		"dateOfBirth": "12.06.1973",
 		"dateOfDeath": "",
-		"isAlive": true
+		"isAlive": true,
+		"clan": "Macpherson"
 	},
 	{
 		"name" : "Rita",
@@ -64,6 +70,7 @@
 		"dateOfBirth": "12.06.1995",
 		"dateOfDeath": "",
 		"isAlive": true,
+		"clan": "Macpherson",
 		"medicalCondition": ["Asthma","Color Blindness"]
 	},
 	{
@@ -73,6 +80,7 @@
 		"lastName": "Daniels",
 		"dateOfBirth": "12.06.1999",
 		"dateOfDeath": "",
-		"isAlive": true
+		"isAlive": true,
+		"clan": "Macpherson"
 	}
 ]
