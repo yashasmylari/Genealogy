@@ -8,7 +8,8 @@
 		"dateOfDeath": "02.08.1995",
 		"isAlive": false,
 		"clan": "",
-		"medicalCondition": ["Asthma","Color Blindness","Breast Cancer"]
+		"medicalCondition": ["Asthma","Color Blindness","Breast Cancer"],
+		"physicalTraits": ["Blonde Hair", "Blue Eye"]
 	},
 	{
 		"name" : "Jack",
