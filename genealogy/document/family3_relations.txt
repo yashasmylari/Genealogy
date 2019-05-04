@@ -1,0 +1,27 @@
+[
+	{
+		"person1" : "Caroline Smith",
+		"person2" : "Nelson Smith",
+		"relation" : "married"
+	},
+	{
+		"person1" : "Caroline Smith",
+		"person2" : "Anna",
+		"relation" : "parent"
+	},
+	{
+		"person1" : "Caroline Smith",
+		"person2" : "Jason Smith",
+		"relation" : "parent"
+	},
+	{
+		"person1" : "Nelson Smith",
+		"person2" : "Anna",
+		"relation" : "parent"
+	},
+	{
+		"person1" : "Nelson Smith",
+		"person2" : "Jason Smith",
+		"relation" : "parent"
+	}
+]
