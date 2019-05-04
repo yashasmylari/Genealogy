@@ -159,7 +159,7 @@ public final class PersonUtil {
 		catch(Exception ex) { System.err.println("Education not defined for >> " + name); }
 
 		// Medical Condition
-		try { person.setMedicalCondition(jsonPerson.getString("medicalCondition")); }
+		try { person.setMedicalCondition(jsonPerson.getString("medicalCondition").split("~")); }
 		catch(Exception ex) { System.err.println("Medical Condition not defined for >> " + name); }
 
 		// Special Characteristic

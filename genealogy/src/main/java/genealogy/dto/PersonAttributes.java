@@ -11,14 +11,14 @@ public class PersonAttributes {
 	Boolean isAlive;
 	String dateOfDeath;
 	String region;
-	String language;
 	String religion;
 	String clan;
 	String ethinicity;
 	String occupation;
-	String physicalTraits;
 	String education;
-	String medicalCondition;
+	String language;
+	String physicalTraits;
+	String[] medicalCondition;
 	String specialCharacteristic;
 
 
@@ -112,10 +112,10 @@ public class PersonAttributes {
 	public void setEducation(String education) {
 		this.education = education;
 	}
-	public String getMedicalCondition() {
+	public String[] getMedicalCondition() {
 		return medicalCondition;
 	}
-	public void setMedicalCondition(String medicalCondition) {
+	public void setMedicalCondition(String[] medicalCondition) {
 		this.medicalCondition = medicalCondition;
 	}
 	public String getSpecialCharacteristic() {

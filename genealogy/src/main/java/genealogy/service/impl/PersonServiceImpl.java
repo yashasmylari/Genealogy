@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import genealogy.Application;
 import genealogy.dao.PersonRepository;
 import genealogy.dto.*;
 import genealogy.service.PersonService;
@@ -19,10 +18,43 @@ import genealogy.util.PersonUtil;
 @Service
 public class PersonServiceImpl implements PersonService {
 
-	private final static Logger log = LoggerFactory.getLogger(Application.class);
+	private final static Logger log = LoggerFactory.getLogger(PersonServiceImpl.class);
 
 	@Autowired
 	PersonRepository personRepository;
+
+
+
+	@Override
+	public void deleteAll() {
+		personRepository.deleteAll();
+	}
+
+
+
+	@Override
+	public Person addPerson(JSONObject person) {
+		try {
+			String name = person.getString("name");
+			Person pb = personRepository.findByName(name);
+			Person p = PersonUtil.getPersonFromJsonString(person);
+			if(pb==null) {
+				personRepository.save(p);
+				return personRepository.findByName(name);
+			}
+			else {
+				Person personNode = PersonUtil.setAttributeFromPerson(p, pb);
+				if(personNode!=null)
+					personRepository.save(personNode);
+				return personNode;
+			}
+		}
+		catch(Exception ex) {
+			log.error("An error occurred while adding person", ex);
+			return null;
+		}
+	}
+
 
 
 	@Override
@@ -46,8 +78,9 @@ public class PersonServiceImpl implements PersonService {
 			p2.setRelationShip(p1);
 
 			relatedPerson.generateRelationship();
-			p1.setRelationShip(null);
-			p2.setRelationShip(null);
+
+			p1.setRelation(null);
+			p2.setRelation(null);
 
 			personRepository.save(p1);
 			personRepository.save(p2);
@@ -60,35 +93,6 @@ public class PersonServiceImpl implements PersonService {
 		}
 	}
 
-
-	@Override
-	public void deleteAll() {
-		personRepository.deleteAll();
-	}
-
-
-	@Override
-	public Person addPerson(JSONObject person) {
-		try {
-			String name = person.getString("name");
-			Person pb = personRepository.findByName(name);
-			Person p = PersonUtil.getPersonFromJsonString(person);
-			if(pb==null) {
-				personRepository.save(p);
-				return personRepository.findByName(name);
-			}
-			else {
-				Person personNode = PersonUtil.setAttributeFromPerson(p, pb);
-				if(personNode!=null)
-					personRepository.save(personNode);
-				return personNode;
-			}
-		}
-		catch(Exception ex) {
-			log.error("An error occurred while related person", ex);
-			return null;
-		}
-	}
 
 
 	@Override
@@ -122,7 +126,23 @@ public class PersonServiceImpl implements PersonService {
 			return relation;
 		}
 		catch(Exception ex) {
-			log.error("An error occurred while related person", ex);
+			log.error("An error occurred while finding relation between person", ex);
+			return null;
+		}
+	}
+
+
+
+	@Override
+	public Person findPerson(String name) {
+		try {
+			Person person = personRepository.findByName(name);
+			if(person!=null)
+				return person;
+			return null;
+		}
+		catch(Exception ex) {
+			log.error("An error occurred while finding the person", ex);
 			return null;
 		}
 	}

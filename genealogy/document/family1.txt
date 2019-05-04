@@ -6,7 +6,8 @@
 		"lastName": "Daniels",
 		"dateOfBirth": "12.06.1934",
 		"dateOfDeath": "02.08.1995",
-		"isAlive": false
+		"isAlive": false,
+		"medicalCondition": "Asthma~Color Blindness"
 	},
 	{
 		"name" : "Jack",
@@ -24,7 +25,8 @@
 		"lastName": "Reynolds",
 		"dateOfBirth": "12.06.1955",
 		"dateOfDeath": "",
-		"isAlive": true
+		"isAlive": true,
+		"medicalCondition": "Asthma~Color Blindness"
 	},
 	{
 		"name" : "Edward",
@@ -42,7 +44,8 @@
 		"lastName": "Reynolds",
 		"dateOfBirth": "12.06.1975",
 		"dateOfDeath": "",
-		"isAlive": true
+		"isAlive": true,
+		"medicalCondition": "Asthma~Color Blindness"
 	},
 	{
 		"name" : "Angelina",
@@ -60,7 +63,8 @@
 		"lastName": "Daniels",
 		"dateOfBirth": "12.06.1995",
 		"dateOfDeath": "",
-		"isAlive": true
+		"isAlive": true,
+		"medicalCondition": "Asthma~Color Blindness"
 	},
 	{
 		"name" : "Roy",

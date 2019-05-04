@@ -2,6 +2,7 @@ package genealogy.dto;
 
 import static genealogy.constants.Relations.*;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,28 +25,29 @@ public class Person extends PersonAttributes {
 	private String relation;
 	private String relationMap;
 
-	@Relationship(type = RELATED_TO, direction = Relationship.UNDIRECTED)
-	private Set<Person> relatedTo = new HashSet<>();
+	// Disabling it because it seems like an extra relationship that is not required
+	/*@Relationship(type = RELATED_TO)
+	private Set<Person> relatedTo = new HashSet<>();*/
 
-	@Relationship(type = FATHER_OF, direction = Relationship.UNDIRECTED)
+	@Relationship(type = FATHER_OF)
 	private Set<Person> fatherOf = new HashSet<>();
 
-	@Relationship(type = MOTHER_OF, direction = Relationship.UNDIRECTED)
+	@Relationship(type = MOTHER_OF)
 	private Set<Person> motherOf = new HashSet<>();
 
-	@Relationship(type = CHILD_OF, direction = Relationship.UNDIRECTED)
+	@Relationship(type = CHILD_OF)
 	private Set<Person> childOf = new HashSet<>();
 
-	@Relationship(type = SON_OF, direction = Relationship.UNDIRECTED)
+	@Relationship(type = SON_OF)
 	private Set<Person> sonOf = new HashSet<>();
 
-	@Relationship(type = DAUGHTER_OF, direction = Relationship.UNDIRECTED)
+	@Relationship(type = DAUGHTER_OF)
 	private Set<Person> daughterOf = new HashSet<>();
 
-	@Relationship(type = FRIENDS_WITH, direction = Relationship.UNDIRECTED)
+	@Relationship(type = FRIENDS_WITH)
 	private Set<Person> friendsWith = new HashSet<>();
 
-	@Relationship(type = Relations.MARRIED_TO, direction = Relationship.UNDIRECTED)
+	@Relationship(type = Relations.MARRIED_TO)
 	private Person marriedTo;
 
 
@@ -88,12 +90,13 @@ public class Person extends PersonAttributes {
 		this.relationMap = relationMap;
 	}
 
-	public Set<Person> getRelatedTo() {
+	// Disabling the getter and setter
+	/*public Set<Person> getRelatedTo() {
 		return relatedTo;
 	}
 	public void setRelatedTo(Person person) {
 		relatedTo.add(person);
-	}
+	}*/
 
 	public Set<Person> getFatherOf() {
 		return fatherOf;
@@ -146,21 +149,16 @@ public class Person extends PersonAttributes {
 
 	// Set Relationship
 	public Person setRelationShip(Person person) {
-		if(person==null) {
-			relation = null;
-			return this;
-		}
-			
+		// Set Relationship Map
 		try {
-			String key = new StringBuilder(name).append("-").append(person.name).toString();
-			relationMap = new JSONObject(relationMap).put(key, relation).toString();
+			relationMap = new JSONObject(relationMap).put(person.name, relation).toString();
 		}
 		catch (JSONException e) {
 			e.printStackTrace();
 		}
 
 		// Relate
-		relatedTo.add(person);
+		// relatedTo.add(person);
 
 		// Add Relationship
 		if(FATHER_OF.equals(relation))
@@ -183,12 +181,12 @@ public class Person extends PersonAttributes {
 
 	@Override
 	public String toString() {
-		return relationMap;
+		return json().toString();
 	}
 
 
 
-	public String jsonString() {
+	public JSONObject json() {
 		JSONObject jsonObject = new JSONObject();
 		try {
 			jsonObject.put("id", id);
@@ -207,17 +205,12 @@ public class Person extends PersonAttributes {
 			jsonObject.put("occupation", occupation);
 			jsonObject.put("physicalTraits", physicalTraits);
 			jsonObject.put("education", education);
-			jsonObject.put("medicalCondition", medicalCondition);
 			jsonObject.put("specialCharacteristic", specialCharacteristic);
-			// ALOKA >> Format this
-		} catch (JSONException e) {
+			jsonObject.put("medicalCondition", Arrays.toString(medicalCondition));
+		}
+		catch (JSONException e) {
 			e.printStackTrace();
 		}
-		StringBuilder sb = new StringBuilder();
-		sb.append(name).append(gender).append(firstName).append(lastName).append(dateOfBirth);
-		sb.append(dateOfDeath).append(isAlive).append(region).append(language);
-		sb.append(religion).append(clan).append(ethinicity).append(occupation);
-		sb.append(physicalTraits).append(education).append(medicalCondition).append(specialCharacteristic);
-		return sb.toString();
+		return jsonObject;
 	}
 }
