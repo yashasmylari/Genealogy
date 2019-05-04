@@ -10,16 +10,20 @@ public class PersonAttributes {
 	String placeOfBirth;
 	Boolean isAlive;
 	String dateOfDeath;
-	String region;
+	String imageUrl;
+	String imageData;
+	String residence;
+	String nationality;
 	String religion;
 	String clan;
 	String ethinicity;
 	String occupation;
 	String education;
-	String language;
-	String physicalTraits;
+	String[] locations;
+	String[] languages;
+	String[] physicalTraits;
 	String[] medicalCondition;
-	String specialCharacteristic;
+	String[] specialCharacteristic;
 
 
 	public String getName() {
@@ -28,100 +32,148 @@ public class PersonAttributes {
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getGender() {
 		return gender;
 	}
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+
 	public String getFirstName() {
 		return firstName;
 	}
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 	public String getLastName() {
 		return lastName;
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
 	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
+
+	public String getPlaceOfBirth() {
+		return placeOfBirth;
+	}
+	public void setPlaceOfBirth(String placeOfBirth) {
+		this.placeOfBirth = placeOfBirth;
+	}
+
 	public Boolean getIsAlive() {
 		return isAlive;
 	}
 	public void setIsAlive(Boolean isAlive) {
 		this.isAlive = isAlive;
 	}
+
 	public String getDateOfDeath() {
 		return dateOfDeath;
 	}
 	public void setDateOfDeath(String dateOfDeath) {
 		this.dateOfDeath = dateOfDeath;
 	}
-	public String getRegion() {
-		return region;
+
+	public String getImageUrl() {
+		return imageUrl;
 	}
-	public void setRegion(String region) {
-		this.region = region;
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
-	public String getLanguage() {
-		return language;
+	public String getImageData() {
+		return imageData;
 	}
-	public void setLanguage(String language) {
-		this.language = language;
+	public void setImageData(String imageData) {
+		this.imageData = imageData;
 	}
+	public String getResidence() {
+		return residence;
+	}
+	public void setResidence(String region) {
+		this.residence = region;
+	}
+
+	public String getNationality() {
+		return nationality;
+	}
+	public void setNationality(String nationality) {
+		this.nationality = nationality;
+	}
+	public String[] getLanguages() {
+		return languages;
+	}
+	public void setLanguages(String[] languages) {
+		this.languages = languages;
+	}
+
 	public String getReligion() {
 		return religion;
 	}
 	public void setReligion(String religion) {
 		this.religion = religion;
 	}
+
 	public String getClan() {
 		return clan;
 	}
 	public void setClan(String clan) {
 		this.clan = clan;
 	}
+
 	public String getEthinicity() {
 		return ethinicity;
 	}
 	public void setEthinicity(String ethinicity) {
 		this.ethinicity = ethinicity;
 	}
+
 	public String getOccupation() {
 		return occupation;
 	}
 	public void setOccupation(String occupation) {
 		this.occupation = occupation;
 	}
-	public String getPhysicalTraits() {
+
+	public String[] getPhysicalTraits() {
 		return physicalTraits;
 	}
-	public void setPhysicalTraits(String physicalTraits) {
+	public void setPhysicalTraits(String[] physicalTraits) {
 		this.physicalTraits = physicalTraits;
 	}
+
 	public String getEducation() {
 		return education;
 	}
 	public void setEducation(String education) {
 		this.education = education;
 	}
+
+	public String[] getLocations() {
+		return locations;
+	}
+	public void setLocations(String[] locations) {
+		this.locations = locations;
+	}
+
 	public String[] getMedicalCondition() {
 		return medicalCondition;
 	}
 	public void setMedicalCondition(String[] medicalCondition) {
 		this.medicalCondition = medicalCondition;
 	}
-	public String getSpecialCharacteristic() {
+
+	public String[] getSpecialCharacteristic() {
 		return specialCharacteristic;
 	}
-	public void setSpecialCharacteristic(String specialCharacteristic) {
+	public void setSpecialCharacteristic(String[] specialCharacteristic) {
 		this.specialCharacteristic = specialCharacteristic;
 	}
 

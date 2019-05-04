@@ -189,24 +189,30 @@ public class Person extends PersonAttributes {
 	public JSONObject json() {
 		JSONObject jsonObject = new JSONObject();
 		try {
-			jsonObject.put("id", id);
-			jsonObject.put("name", name);
-			jsonObject.put("firstName", firstName);
-			jsonObject.put("lastName", lastName);
-			jsonObject.put("dateOfBirth", dateOfBirth);
-			jsonObject.put("placeOfBirth", placeOfBirth);
-			jsonObject.put("isAlive", isAlive);
-			jsonObject.put("dateOfDeath", dateOfDeath);
-			jsonObject.put("region", region);
-			jsonObject.put("language", language);
-			jsonObject.put("religion", religion);
-			jsonObject.put("clan", clan);
-			jsonObject.put("ethinicity", ethinicity);
-			jsonObject.put("occupation", occupation);
-			jsonObject.put("physicalTraits", physicalTraits);
-			jsonObject.put("education", education);
-			jsonObject.put("specialCharacteristic", specialCharacteristic);
-			jsonObject.put("medicalCondition", Arrays.toString(medicalCondition));
+			jsonObject.put("id", id)
+			.put("name", name)
+			.put("gender", gender)
+			.put("firstName", firstName)
+			.put("lastName", lastName)
+			.put("dateOfBirth", dateOfBirth)
+			.put("placeOfBirth", placeOfBirth)
+			.put("isAlive", isAlive)
+			.put("dateOfDeath", dateOfDeath)
+			.put("imageUrl", imageUrl)
+			.put("imageUrl", imageData)
+			.put("residence", residence)
+			.put("nationality", nationality)
+			.put("religion", religion)
+			.put("religion", religion)
+			.put("clan", clan)
+			.put("ethinicity", ethinicity)
+			.put("occupation", occupation)
+			.put("education", education)
+			.put("locations", Arrays.toString(locations))
+			.put("languages", Arrays.toString(languages))
+			.put("physicalTraits", Arrays.toString(physicalTraits))
+			.put("medicalCondition", Arrays.toString(medicalCondition))
+			.put("specialCharacteristic", Arrays.toString(specialCharacteristic));
 		}
 		catch (JSONException e) {
 			e.printStackTrace();

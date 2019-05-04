@@ -126,13 +126,21 @@ public final class PersonUtil {
 		try { person.setDateOfDeath(jsonPerson.getString("dateOfDeath")); }
 		catch(Exception ex) { System.err.println("Date Of Death not defined for >> " + name); }
 
-		// Region
-		try { person.setRegion(jsonPerson.getString("region")); }
-		catch(Exception ex) { System.err.println("Region not defined for >> " + name); }
+		// Date Of Death
+		try { person.setImageUrl(jsonPerson.getString("imageUrl")); }
+		catch(Exception ex) { System.err.println("Image URL not defined for >> " + name); }
 
-		// Language
-		try { person.setLanguage(jsonPerson.getString("language")); }
-		catch(Exception ex) { System.err.println("Language not defined for >> " + name); }
+		// Date Of Death
+		try { person.setImageData(jsonPerson.getString("imageData")); }
+		catch(Exception ex) { System.err.println("Image Data not defined for >> " + name); }
+
+		// Residence
+		try { person.setResidence(jsonPerson.getString("residence")); }
+		catch(Exception ex) { System.err.println("Residence not defined for >> " + name); }
+
+		// Nationality
+		try { person.setNationality(jsonPerson.getString("nationality")); }
+		catch(Exception ex) { System.err.println("Nationality not defined for >> " + name); }
 
 		// Religion
 		try { person.setReligion(jsonPerson.getString("religion")); }
@@ -150,20 +158,28 @@ public final class PersonUtil {
 		try { person.setOccupation(jsonPerson.getString("occupation")); }
 		catch(Exception ex) { System.err.println("Occupation not defined for >> " + name); }
 
-		// Physical Traits
-		try { person.setPhysicalTraits(jsonPerson.getString("physicalTraits")); }
-		catch(Exception ex) { System.err.println("Physical Traits not defined for >> " + name); }
-
 		// Education
 		try { person.setEducation(jsonPerson.getString("education")); }
 		catch(Exception ex) { System.err.println("Education not defined for >> " + name); }
 
 		// Medical Condition
-		try { person.setMedicalCondition(jsonPerson.getString("medicalCondition").split("~")); }
+		try { person.setLocations(Common.jsonArrayToStringArray(jsonPerson.getJSONArray("locations"))); }
+		catch(Exception ex) { System.err.println("Medical Condition not defined for >> " + name); }
+
+		// Language
+		try { person.setLanguages(Common.jsonArrayToStringArray(jsonPerson.getJSONArray("languages"))); }
+		catch(Exception ex) { System.err.println("Language not defined for >> " + name); }
+
+		// Physical Traits
+		try { person.setPhysicalTraits(Common.jsonArrayToStringArray(jsonPerson.getJSONArray("physicalTraits"))); }
+		catch(Exception ex) { System.err.println("Physical Traits not defined for >> " + name); }
+
+		// Medical Condition
+		try { person.setMedicalCondition(Common.jsonArrayToStringArray(jsonPerson.getJSONArray("medicalCondition"))); }
 		catch(Exception ex) { System.err.println("Medical Condition not defined for >> " + name); }
 
 		// Special Characteristic
-		try { person.setSpecialCharacteristic(jsonPerson.getString("specialCharacteristic")); }
+		try { person.setSpecialCharacteristic(Common.jsonArrayToStringArray(jsonPerson.getJSONArray("specialCharacteristic"))); }
 		catch(Exception ex) { System.err.println("Special Characteristic not defined for >> " + name); }
 
 		return person;
@@ -300,6 +316,7 @@ public final class PersonUtil {
 	public static Person setAttributeFromPerson(Person person, Person personNode) {
 		try {
 			boolean attributeSet = false;
+
 			if(person.getGender()!=null) {
 				personNode.setGender(person.getGender());
 				attributeSet = true;
@@ -316,6 +333,10 @@ public final class PersonUtil {
 				personNode.setDateOfBirth(person.getDateOfBirth());
 				attributeSet = true;
 			}
+			if(person.getPlaceOfBirth()!=null) {
+				personNode.setPlaceOfBirth(person.getPlaceOfBirth());
+				attributeSet = true;
+			}
 			if(person.getDateOfDeath()!=null) {
 				personNode.setDateOfDeath(person.getDateOfDeath());
 				attributeSet = true;
@@ -324,12 +345,21 @@ public final class PersonUtil {
 				personNode.setIsAlive(person.getIsAlive());
 				attributeSet = true;
 			}
-			if(person.getRegion()!=null) {
-				personNode.setRegion(person.getRegion());
+
+			if(person.getImageUrl()!=null) {
+				personNode.setImageUrl(person.getImageUrl());
 				attributeSet = true;
 			}
-			if(person.getLanguage()!=null) {
-				personNode.setLanguage(person.getLanguage());
+			if(person.getImageData()!=null) {
+				personNode.setImageData(person.getImageData());
+				attributeSet = true;
+			}
+			if(person.getResidence()!=null) {
+				personNode.setResidence(person.getResidence());
+				attributeSet = true;
+			}
+			if(person.getNationality()!=null) {
+				personNode.setNationality(person.getNationality());
 				attributeSet = true;
 			}
 			if(person.getReligion()!=null) {
@@ -348,12 +378,21 @@ public final class PersonUtil {
 				personNode.setOccupation(person.getOccupation());
 				attributeSet = true;
 			}
+			if(person.getEducation()!=null) {
+				personNode.setEducation(person.getEducation());
+				attributeSet = true;
+			}
+
 			if(person.getPhysicalTraits()!=null) {
 				personNode.setPhysicalTraits(person.getPhysicalTraits());
 				attributeSet = true;
 			}
-			if(person.getEducation()!=null) {
-				personNode.setEducation(person.getEducation());
+			if(person.getLocations()!=null) {
+				personNode.setLocations(person.getLocations());
+				attributeSet = true;
+			}
+			if(person.getLanguages()!=null) {
+				personNode.setLanguages(person.getLanguages());
 				attributeSet = true;
 			}
 			if(person.getMedicalCondition()!=null) {

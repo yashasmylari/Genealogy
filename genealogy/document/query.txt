@@ -54,3 +54,9 @@ RETURN k,r,l
 // User Story #5
 
 
+
+// To find the relationship
+MATCH (n:Person)
+WHERE single(x IN n.medicalCondition WHERE x = "Asthma")
+RETURN n
+
