@@ -2,13 +2,13 @@
 
 
 CREATE TABLE person (
-	id INT AUTO_INCREMENT PRIMARY KEY,
+	id INT PRIMARY KEY,
 	name TEXT,
 	firstName TEXT,
 	lastName TEXT,
 	dateOfBirth TEXT,
 	placeOfBirth TEXT,
-	isAlive TINYINT(1) DEFAULT 1,
+	isAlive SMALLINT DEFAULT 1,
 	dateOfDeath TEXT,
 	imageUrl TEXT,
 	imageData TEXT,
@@ -19,25 +19,25 @@ CREATE TABLE person (
 	ethnicity TEXT,
 	occupation TEXT,
 	education TEXT,
-	deleteFlag TINYINT(1) DEFAULT 0
+	deleteFlag SMALLINT DEFAULT 0
 );
+
 
 
 CREATE TABLE relation (
-	id INT AUTO_INCREMENT PRIMARY KEY,
+	id INT PRIMARY KEY,
 	name TEXT,
-	deleteFlag TINYINT(1) DEFAULT 0
+	deleteFlag SMALLINT DEFAULT 0
 );
-
 
 
 
 CREATE TABLE person_relation (
-	id INT AUTO_INCREMENT PRIMARY KEY,
+	id INT PRIMARY KEY,
 	person1 INT,
 	person2 INT,
 	relationId INT,
-	deleteFlag TINYINT(1) DEFAULT 0,
+	deleteFlag SMALLINT DEFAULT 0,
 	FOREIGN KEY (person1) REFERENCES person(id),
 	FOREIGN KEY (person2) REFERENCES person(id),
 	FOREIGN KEY (relationId) REFERENCES relation(id)
@@ -49,7 +49,7 @@ CREATE TABLE person_relation (
 CREATE TABLE locations (
 	id INT PRIMARY KEY,
 	name TEXT,
-	deleteFlag TINYINT(1) DEFAULT 0
+	deleteFlag SMALLINT DEFAULT 0
 );
 
 
@@ -57,7 +57,7 @@ CREATE TABLE person_locations (
 	id INT PRIMARY KEY,
 	personId INT,
 	locationId INT,
-	deleteFlag TINYINT(1) DEFAULT 0,
+	deleteFlag SMALLINT DEFAULT 0,
 	FOREIGN KEY (personId) REFERENCES person(id),
 	FOREIGN KEY (locationId) REFERENCES locations(id)
 );
@@ -65,9 +65,9 @@ CREATE TABLE person_locations (
 
 
 CREATE TABLE languages (
-	id INT AUTO_INCREMENT PRIMARY KEY,
+	id INT PRIMARY KEY,
 	name TEXT,
-	deleteFlag TINYINT(1) DEFAULT 0
+	deleteFlag SMALLINT DEFAULT 0
 );
 
 
@@ -75,7 +75,7 @@ CREATE TABLE person_languages (
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	personId INT,
 	languageId INT,
-	deleteFlag TINYINT(1) DEFAULT 0,
+	deleteFlag SMALLINT DEFAULT 0,
 	FOREIGN KEY (personId) REFERENCES person(id),
 	FOREIGN KEY (locationId) REFERENCES languages(id)
 );
@@ -83,54 +83,54 @@ CREATE TABLE person_languages (
 
 
 CREATE TABLE physicalTraits (
-	id INT AUTO_INCREMENT PRIMARY KEY,
+	id INT PRIMARY KEY,
 	personId INT,
 	name TEXT,
-	deleteFlag TINYINT(1) DEFAULT 0,
+	deleteFlag SMALLINT DEFAULT 0,
 	FOREIGN KEY (personId) REFERENCES physicalTraits(id)
 );
 
 
 CREATE TABLE person_languages (
-	id INT AUTO_INCREMENT PRIMARY KEY,
+	id INT PRIMARY KEY,
 	personId INT,
 	languageId INT,
-	deleteFlag TINYINT(1) DEFAULT 0,
+	deleteFlag SMALLINT DEFAULT 0,
 	FOREIGN KEY (personId) REFERENCES person(id),
 	FOREIGN KEY (locationId) REFERENCES languages(id)
 );
 
 
 CREATE TABLE medicalConditions (
-	id INT AUTO_INCREMENT PRIMARY KEY,
+	id INT PRIMARY KEY,
 	name TEXT,
-	deleteFlag TINYINT(1) DEFAULT 0,
+	deleteFlag SMALLINT DEFAULT 0,
 	FOREIGN KEY (personId) REFERENCES medicalConditions(id)
 );
 
 
 CREATE TABLE person_medicalConditions (
-	id INT AUTO_INCREMENT PRIMARY KEY,
+	id INT PRIMARY KEY,
 	personId INT,
 	medicalConditionId INT,
-	deleteFlag TINYINT(1) DEFAULT 0,
+	deleteFlag SMALLINT DEFAULT 0,
 	FOREIGN KEY (personId) REFERENCES person(id),
 	FOREIGN KEY (medicalConditionId) REFERENCES medicalCondition(id)
 );
 
 
 CREATE TABLE specialCharacteristics (
-	id INT AUTO_INCREMENT PRIMARY KEY,
+	id INT PRIMARY KEY,
 	name TEXT,
-	deleteFlag TINYINT(1) DEFAULT 0
+	deleteFlag SMALLINT DEFAULT 0
 );
 
 
 CREATE TABLE person_specialCharacteristics (
-	id INT AUTO_INCREMENT PRIMARY KEY,
+	id INT PRIMARY KEY,
 	personId INT,
 	specialCharacteristicId INT,
-	deleteFlag TINYINT(1) DEFAULT 0,
+	deleteFlag SMALLINT DEFAULT 0,
 	FOREIGN KEY (personId) REFERENCES person(id),
 	FOREIGN KEY (specialCharacteristicId) REFERENCES specialCharacteristics(id)
 );
