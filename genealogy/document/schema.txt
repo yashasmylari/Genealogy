@@ -23,16 +23,38 @@ CREATE TABLE person (
 );
 
 
-
-CREATE TABLE locations (
+CREATE TABLE relation (
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	name TEXT,
 	deleteFlag TINYINT(1) DEFAULT 0
 );
 
 
-CREATE TABLE person_locations (
+
+
+CREATE TABLE person_relation (
 	id INT AUTO_INCREMENT PRIMARY KEY,
+	person1 INT,
+	person2 INT,
+	relationId INT,
+	deleteFlag TINYINT(1) DEFAULT 0,
+	FOREIGN KEY (person1) REFERENCES person(id),
+	FOREIGN KEY (person2) REFERENCES person(id),
+	FOREIGN KEY (relationId) REFERENCES relation(id)
+);
+
+
+
+
+CREATE TABLE locations (
+	id INT PRIMARY KEY,
+	name TEXT,
+	deleteFlag TINYINT(1) DEFAULT 0
+);
+
+
+CREATE TABLE person_locations (
+	id INT PRIMARY KEY,
 	personId INT,
 	locationId INT,
 	deleteFlag TINYINT(1) DEFAULT 0,
