@@ -1,6 +1,7 @@
 
 [
 	//Simran (for same festival user story.Single node)
+
 	{
 		"name" : "Simran Kaur",
 		"gender": "female",
@@ -44,8 +45,6 @@
 			"||Heidelberg,Germany||1985-till present||Born||"
 		]
 	},
-	
-	
 	
 	
 	
@@ -223,13 +222,13 @@
 		"isAlive": true,
 		"community": "",
 		"clan": "Kennedy",
-		"language": ["English",”Irish”],
+		"language": ["English","Irish"],
 		"nationality": "American" ,
 		"religion": "Christianity",
-		“physicalTraits”: [
+		"physicalTraits": [
 			"Green Eyes",
-			"Red Hair",”Freckled Face”
-		]
+			"Red Hair","Freckled Face"
+		],
 
 		"residence": "Boston",
 		"locations": [
@@ -250,13 +249,13 @@
 		"isAlive": true,
 		"community": "",
 		"clan": "Murphy",
-		"language": ["English",”Irish”],
+		"language": ["English","Irish"],
 		"nationality": "Irish" ,
 		"religion": "Christianity",
-		“physicalTraits”: [
+		"physicalTraits": [
 			"Green Eyes",
 			"Blond Hair"
-		]
+		],
 		"residence": "Boston",
 		"locations": [
 			"||Galway||1967||Born||",
@@ -277,16 +276,16 @@
 		"isAlive": true,
 		"community": "",
 		"clan": "Murphy",
-		"language": ["English",”Irish”],
+		"language": ["English","Irish"],
 		"nationality": "Irish" ,
 		"religion": "Christianity",
-		“physicalTraits”: [
+		"physicalTraits": [
 			"Green Eyes",
-			"Red Hair",”Freckled Face”
-		]
+			"Red Hair","Freckled Face"
+		],
 		"residence": "Galway",
 		"locations": [
-			"||Galway||1939||Born||",
+			"||Galway||1939||Born||"
 		]
 	},
 	
@@ -302,13 +301,13 @@
 		"isAlive": true,
 		"community": "",
 		"clan": "Kennedy",
-		"language": ["English",”Irish”],
+		"language": ["English","Irish"],
 		"nationality": "Irish" ,
 		"religion": "Christianity",
-		“physicalTraits”: [
+		"physicalTraits": [
 			"Green Eyes",
-			"Red Hair",”Freckled Face”
-		]
+			"Red Hair","Freckled Face"
+		],
 
 		"residence": "Boston",
 		"locations": [
