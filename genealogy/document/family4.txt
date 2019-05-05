@@ -1,7 +1,5 @@
 
 [
-	//Simran (for same festival user story.Single node)
-
 	{
 		"name" : "Simran Kaur",
 		"gender": "female",
@@ -23,9 +21,6 @@
 		]
 	},
 	
-	
-	//Jaspreet (for same festival user story.Single node)
-	
 	{
 		"name" : "Jaspreet Singh",
 		"gender": "male",
@@ -45,12 +40,7 @@
 			"||Heidelberg,Germany||1985-till present||Born||"
 		]
 	},
-	
-	
-	
-	//Amanpreet family
-	
-	//Amanpreet
+
 	{
 		"name" : "Amanpreet Kaur",
 		"gender": "female",
@@ -72,8 +62,7 @@
 		]
 	},
 	
-	//Amanpreet's mother
-	
+
 	{
 		"name" : "Geet Kaur",
 		"gender": "female",
@@ -94,9 +83,9 @@
 			"||Texas,USA||1983-till present||Marriage||"
 		]
 	},
-	
-	//Amanpreet's father
-	
+
+	//Done till the node below
+
 	{
 		"name" : "Karamjeet Singh",
 		"gender": "male",
