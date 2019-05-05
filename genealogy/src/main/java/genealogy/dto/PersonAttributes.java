@@ -16,7 +16,7 @@ public class PersonAttributes {
 	String nationality;
 	String religion;
 	String clan;
-	String ethinicity;
+	String ethnicity;
 	String occupation;
 	String education;
 	String[] locations;
@@ -128,11 +128,11 @@ public class PersonAttributes {
 		this.clan = clan;
 	}
 
-	public String getEthinicity() {
-		return ethinicity;
+	public String getEthnicity() {
+		return ethnicity;
 	}
-	public void setEthinicity(String ethinicity) {
-		this.ethinicity = ethinicity;
+	public void setEthnicity(String ethnicity) {
+		this.ethnicity = ethnicity;
 	}
 
 	public String getOccupation() {

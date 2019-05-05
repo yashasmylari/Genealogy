@@ -150,9 +150,9 @@ public final class PersonUtil {
 		try { person.setClan(jsonPerson.getString("clan")); }
 		catch(Exception ex) { System.err.println("Clan not defined for >> " + name); }
 
-		// Ethinicity
-		try { person.setEthinicity(jsonPerson.getString("ethinicity")); }
-		catch(Exception ex) { System.err.println("Ethinicity not defined for >> " + name); }
+		// Ethnicity
+		try { person.setEthnicity(jsonPerson.getString("ethnicity")); }
+		catch(Exception ex) { System.err.println("Ethnicity not defined for >> " + name); }
 
 		// Occupation
 		try { person.setOccupation(jsonPerson.getString("occupation")); }
@@ -370,8 +370,8 @@ public final class PersonUtil {
 				personNode.setClan(person.getClan());
 				attributeSet = true;
 			}
-			if(person.getEthinicity()!=null) {
-				personNode.setEthinicity(person.getEthinicity());
+			if(person.getEthnicity()!=null) {
+				personNode.setEthnicity(person.getEthnicity());
 				attributeSet = true;
 			}
 			if(person.getOccupation()!=null) {

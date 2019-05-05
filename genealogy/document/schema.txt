@@ -16,7 +16,7 @@ CREATE TABLE person (
 	nationality TEXT,
 	religion TEXT,
 	clan TEXT,
-	ethinicity TEXT,
+	ethnicity TEXT,
 	occupation TEXT,
 	education TEXT,
 	deleteFlag TINYINT(1) DEFAULT 0

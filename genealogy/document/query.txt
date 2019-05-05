@@ -14,7 +14,7 @@ Person {
 	String language;
 	String religion;
 	String clan;
-	String ethinicity;
+	String ethnicity;
 	String occupation;
 	String physicalTraits;
 	String education;

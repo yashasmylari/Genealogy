@@ -205,7 +205,7 @@ public class Person extends PersonAttributes {
 			.put("religion", religion)
 			.put("religion", religion)
 			.put("clan", clan)
-			.put("ethinicity", ethinicity)
+			.put("ethnicity", ethnicity)
 			.put("occupation", occupation)
 			.put("education", education)
 			.put("locations", Arrays.toString(locations))
