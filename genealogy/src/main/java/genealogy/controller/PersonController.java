@@ -118,7 +118,8 @@ public class PersonController {
 				RelatedPerson<Person, Person> relatedPerson = personService.relatePerson(person1, person2, related);
 				if(relatedPerson==null)
 					jsonOutput.put("Atleast one of the person node is undefined");
-				jsonOutput.put(relatedPerson.toJSON());
+				else
+					jsonOutput.put(relatedPerson.toJSON());
 			}
 			return jsonOutput.toString();
 		}

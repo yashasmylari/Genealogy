@@ -37,6 +37,15 @@ Person {
 MATCH (p1:Person {name: "Roy"}), (p2:Person {name: "Jack"}),
 path = shortestpath((p1)-[:FATHER_OF | :MOTHER_OF |:MARRIED_TO *]-(p2))
 RETURN path
+// ---->>>> Need to add more data
+/*
+-> Jason >> Son of >> Kate and Jack
+   -> Cheryl >> Married to >> Jason
+      -> Steve >> Son of >> Jason and Cheryl
+	  -> Melissa >> Married >> Steve
+	     -> Hugh >> Son of Steve and Melissa
+// After adding more data, just change the name in the query. Complete
+*/
 
 
 
@@ -47,25 +56,29 @@ WHERE k.name = "Rita" AND SINGLE(x IN l.medicalCondition WHERE x = "Asthma")
 RETURN k,r,l
 
 
-// User Story #4 
-// Migration Country name
-MATCH (k:Person)-[r:FATHER_OF | MOTHER_OF *1..7 ]-(l:Person)
-WHERE k.name = "Jason Smith" AND
-	ANY (x IN k.locations WHERE x =~ ".*Germany.*" /*"(?i).*Germany.*" IN x*/ )
-RETURN k, r, l,  k.locations
 
-// Reason for Migration
-// Medical Treatment
+
+// User Story #4 
 MATCH (k:Person)-[r:FATHER_OF | MOTHER_OF *1..7 ]-(l:Person)
 WHERE k.name = "Jason Smith" AND
-	ANY (x IN k.locations WHERE x =~ ".*Education.*" /*"(?i).*Germany.*" IN x*/ )
-RETURN k, r, l,  k.locations
+	ANY (x IN k.locations WHERE x =~ ".*Education.*" OR x =~ ".*Heidelberg.*"  )
+RETURN k, k.name, k.locations
+
+
 
 
 
 // User Story #5
-// In Progres
 
+// Sub Story 1
+MATCH (n:Person)
+WHERE n.religion = "Sikh" AND n.clan = "Singh" AND n.residence =~ ".*Heidelberg.*"
+RETURN n.name, n.residence
+
+
+
+// Sub Story 2
+// Dependent on the data of 'User Story 2'
 
 
 

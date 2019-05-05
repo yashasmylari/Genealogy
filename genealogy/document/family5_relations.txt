@@ -5,13 +5,8 @@
 		"relation" : "parent"
 	},
 	{
-		"person1" : "Marie Kennedy",
-		"person2" : "Charles Kennedy",
-		"relation" : "child"
-	},
-	{
 		"person1" : "Charline Kennedy",
-		"person2" : "Charles Kennedy",
+		"person2" : "Connor Kennedy",
 		"relation" : "parent"
 	}
 ]
