@@ -1,0 +1,17 @@
+[
+	{
+		"person1" : "Donal Murphy",
+		"person2" : "John Murphy",
+		"relation" : "parent"
+	},
+	{
+		"person1" : "Marie Kennedy",
+		"person2" : "Charles Kennedy",
+		"relation" : "child"
+	},
+	{
+		"person1" : "Charline Kennedy",
+		"person2" : "Charles Kennedy",
+		"relation" : "parent"
+	}
+]

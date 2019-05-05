@@ -84,8 +84,6 @@
 		]
 	},
 
-	//Done till the node below
-
 	{
 		"name" : "Karamjeet Singh",
 		"gender": "male",
@@ -106,8 +104,6 @@
 			"||Texas,USA||1980-till present||Employment||"
 		]
 	},
-	
-	//Amanpreet's Grandfather
 	
 	{
 		"name" : "Sukhwinder Singh",
@@ -130,8 +126,6 @@
 		]
 	},
 	
-	//Amanpreet's Grandmother
-	
 	{
 		"name" : "Leshya Singh",
 		"gender": "female",
@@ -153,8 +147,6 @@
 		]
 	},
 	
-	//Amanpreet's Great grandmother
-	
 	{
 		"name" : "Maahi Singh",
 		"gender": "female",
@@ -175,8 +167,6 @@
 		]
 	},
 	
-	//Amanpreet's Greatgrandfather
-	
 	{
 		"name" : "Akaldeep Singh",
 		"gender": "male",
@@ -195,114 +185,7 @@
 		"locations": [
 			"||Punjab,India||1877-1955||Born||"
 		]
-	},
-
-
-
-	//Marie (for same Physical traits user story.Single node)
-	{
-		"name" : "Marie Kennedy",
-		"gender": "female",
-		"firstName": "Marie",
-		"lastName": "Kennedy",
-		"dateOfBirth": "20.12.1977",
-		"placeOfBirth": "Boston" ,
-		"dateOfDeath": "",
-		"isAlive": true,
-		"community": "",
-		"clan": "Kennedy",
-		"language": ["English","Irish"],
-		"nationality": "American" ,
-		"religion": "Christianity",
-		"physicalTraits": [
-			"Green Eyes",
-			"Red Hair","Freckled Face"
-		],
-
-		"residence": "Boston",
-		"locations": [
-			"||Boston,USA||1977||Born||"
-		]
-	},
-	
-	// John
-	
-	{
-		"name" : "John Murphy",
-		"gender": "male",
-		"firstName": "John",
-		"lastName": "Murphy",
-		"dateOfBirth": "10.10.1967",
-		"placeOfBirth": "Galway" ,
-		"dateOfDeath": "",
-		"isAlive": true,
-		"community": "",
-		"clan": "Murphy",
-		"language": ["English","Irish"],
-		"nationality": "Irish" ,
-		"religion": "Christianity",
-		"physicalTraits": [
-			"Green Eyes",
-			"Blond Hair"
-		],
-		"residence": "Boston",
-		"locations": [
-			"||Galway||1967||Born||",
-			"||Boston,USA||1984||Education||"
-		]
-	},
-	
-	// John’s Father
-	
-	{
-		"name" : "Donal Murphy",
-		"gender": "male",
-		"firstName": "Donal",
-		"lastName": "Murphy",
-		"dateOfBirth": "11.05.1939",
-		"placeOfBirth": "Galway" ,
-		"dateOfDeath": "",
-		"isAlive": true,
-		"community": "",
-		"clan": "Murphy",
-		"language": ["English","Irish"],
-		"nationality": "Irish" ,
-		"religion": "Christianity",
-		"physicalTraits": [
-			"Green Eyes",
-			"Red Hair","Freckled Face"
-		],
-		"residence": "Galway",
-		"locations": [
-			"||Galway||1939||Born||"
-		]
-	},
-	
-	// Marie’s Father
-	{
-		"name" : "Marie Kennedy",
-		"gender": "female",
-		"firstName": "Charles",
-		"lastName": "Kennedy",
-		"dateOfBirth": "20.12.1947",
-		"placeOfBirth": "Broomhill" ,
-		"dateOfDeath": "",
-		"isAlive": true,
-		"community": "",
-		"clan": "Kennedy",
-		"language": ["English","Irish"],
-		"nationality": "Irish" ,
-		"religion": "Christianity",
-		"physicalTraits": [
-			"Green Eyes",
-			"Red Hair","Freckled Face"
-		],
-
-		"residence": "Boston",
-		"locations": [
-			"||Broomhill,Armagah||1947||Born||",
-			"||Boston,USA||1962||Education||"
-		]
 	}
+
 ]
 

@@ -1,0 +1,130 @@
+
+[
+
+	{
+		"name" : "Marie Kennedy",
+		"gender": "female",
+		"firstName": "Marie",
+		"lastName": "Kennedy",
+		"dateOfBirth": "20.12.1977",
+		"placeOfBirth": "Boston" ,
+		"dateOfDeath": "",
+		"isAlive": true,
+		"community": "",
+		"clan": "Kennedy",
+		"language": ["English","Irish"],
+		"nationality": "American" ,
+		"religion": "Christianity",
+		"physicalTraits": [
+			"Green Eyes",
+			"Red Hair","Freckled Face"
+		],
+
+		"residence": "Boston",
+		"locations": [
+			"||Boston,USA||1977||Born||"
+		]
+	},
+	
+	{
+		"name" : "John Murphy",
+		"gender": "male",
+		"firstName": "John",
+		"lastName": "Murphy",
+		"dateOfBirth": "10.10.1967",
+		"placeOfBirth": "Galway" ,
+		"dateOfDeath": "",
+		"isAlive": true,
+		"community": "",
+		"clan": "Murphy",
+		"language": ["English","Irish"],
+		"nationality": "Irish" ,
+		"religion": "Christianity",
+		"physicalTraits": [
+			"Green Eyes",
+			"Blond Hair"
+		],
+		"residence": "Boston",
+		"locations": [
+			"||Galway||1967||Born||",
+			"||Boston,USA||1984||Education||"
+		]
+	},
+	
+	{
+		"name" : "Donal Murphy",
+		"gender": "male",
+		"firstName": "Donal",
+		"lastName": "Murphy",
+		"dateOfBirth": "11.05.1939",
+		"placeOfBirth": "Galway" ,
+		"dateOfDeath": "",
+		"isAlive": true,
+		"community": "",
+		"clan": "Murphy",
+		"language": ["English","Irish"],
+		"nationality": "Irish" ,
+		"religion": "Christianity",
+		"physicalTraits": [
+			"Green Eyes",
+			"Red Hair","Freckled Face"
+		],
+		"residence": "Galway",
+		"locations": [
+			"||Galway||1939||Born||"
+		]
+	},
+	
+	{
+		"name" : "Charline Kennedy",
+		"gender": "female",
+		"firstName": "Charline",
+		"lastName": "Kennedy",
+		"dateOfBirth": "20.12.1947",
+		"placeOfBirth": "Broomhill" ,
+		"dateOfDeath": "",
+		"isAlive": true,
+		"community": "",
+		"clan": "Kennedy",
+		"language": ["English","Irish"],
+		"nationality": "Irish" ,
+		"religion": "Christianity",
+		"physicalTraits": [
+			"Green Eyes",
+			"Red Hair","Freckled Face"
+		],
+
+		"residence": "Boston",
+		"locations": [
+			"||Broomhill,Armagah||1947||Born||",
+			"||Boston,USA||1962||Education||"
+		]
+	},
+
+	{
+		"name" : "Connor Kennedy",
+		"gender": "male",
+		"firstName": "Connor ",
+		"lastName": "Kennedy",
+		"dateOfBirth": "20.02.1967",
+		"placeOfBirth": "Broomhill" ,
+		"dateOfDeath": "",
+		"isAlive": true,
+		"community": "",
+		"clan": "Kennedy",
+		"language": ["English","Irish"],
+		"nationality": "Irish" ,
+		"religion": "Christianity",
+		"physicalTraits": [
+			"Blue Eyes",
+			"Red Hair"
+		],
+
+		"residence": "Boston",
+		"locations": [
+			"||Broomhill,Armagah||1947||Born||",
+			"||Boston,USA||1962||Education||"
+		]
+	}
+]
+

@@ -8,5 +8,25 @@
 		"person1" : "Karamjeet Singh",
 		"person2" : "Amanpreet Kaur",
 		"relation" : "parent"
+	},
+	{
+		"person1" : "Sukhwinder Singh",
+		"person2" : "Karamjeet Singh",
+		"relation" : "parent"
+	},
+	{
+		"person1" : "Leshya Singh",
+		"person2" : "Karamjeet Singh",
+		"relation" : "parent"
+	},
+	{
+		"person1" : "Maahi Singh",
+		"person2" : "Sukhwinder Singh",
+		"relation" : "parent"
+	},
+	{
+		"person1" : "Akaldeep Singh",
+		"person2" : "Sukhwinder Singh",
+		"relation" : "parent"
 	}
 ]
