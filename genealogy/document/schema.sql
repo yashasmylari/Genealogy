@@ -74,10 +74,10 @@ CREATE TABLE languages (
 CREATE TABLE person_languages (
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	personId INT,
-	languageId INT,
+	lauguageId INT,
 	deleteFlag SMALLINT DEFAULT 0,
 	FOREIGN KEY (personId) REFERENCES person(id),
-	FOREIGN KEY (locationId) REFERENCES languages(id)
+	FOREIGN KEY (lauguageId) REFERENCES languages(id)
 );
 
 
@@ -91,21 +91,20 @@ CREATE TABLE physicalTraits (
 );
 
 
-CREATE TABLE person_languages (
+CREATE TABLE person_physicalTraits (
 	id INT PRIMARY KEY,
 	personId INT,
-	languageId INT,
+	physicalTraitsId INT,
 	deleteFlag SMALLINT DEFAULT 0,
 	FOREIGN KEY (personId) REFERENCES person(id),
-	FOREIGN KEY (locationId) REFERENCES languages(id)
+	FOREIGN KEY (physicalTraitsId) REFERENCES physicalTraits(id)
 );
 
 
 CREATE TABLE medicalConditions (
 	id INT PRIMARY KEY,
 	name TEXT,
-	deleteFlag SMALLINT DEFAULT 0,
-	FOREIGN KEY (personId) REFERENCES medicalConditions(id)
+	deleteFlag SMALLINT DEFAULT 0
 );
 
 
@@ -115,7 +114,7 @@ CREATE TABLE person_medicalConditions (
 	medicalConditionId INT,
 	deleteFlag SMALLINT DEFAULT 0,
 	FOREIGN KEY (personId) REFERENCES person(id),
-	FOREIGN KEY (medicalConditionId) REFERENCES medicalCondition(id)
+	FOREIGN KEY (medicalConditionId) REFERENCES medicalConditions(id)
 );
 
 
