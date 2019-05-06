@@ -32,7 +32,7 @@ Person {
 
 
 // User Story #1 (Vivek)
-// Done Using API need to confirm whether it is Ok
+MATCH (n:Person{name:"Leshya Singh"}) SET n.residence = "Toronto,Canada" RETURN n.residence
 
 
 
