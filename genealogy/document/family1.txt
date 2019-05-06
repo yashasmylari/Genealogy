@@ -1,5 +1,64 @@
 [
 	{
+		"name" : "Hugh",
+		"gender": "male",
+		"firstName": "Hugh",
+		"lastName": "Daniels",
+		"dateOfBirth": "30.09.2010",
+		"dateOfDeath": "",
+		"isAlive": true,
+		"clan": "",
+		"medicalCondition": ["Asthma","Color Blindness","Breast Cancer"],
+		"physicalTraits": ["Blonde Hair", "Black Eye"]
+	},
+	{
+		"name" : "Melissa",
+		"gender": "female",
+		"firstName": "Melissa",
+		"lastName": "Daniels",
+		"dateOfBirth": "10.06.1992",
+		"dateOfDeath": "",
+		"isAlive": true,
+		"clan": "",
+		"physicalTraits": ["Black Hair", "Black Eye"]
+	},
+	{
+		"name" : "Steve",
+		"gender": "male",
+		"firstName": "Steve",
+		"lastName": "Daniels",
+		"dateOfBirth": "10.06.1994",
+		"dateOfDeath": "",
+		"isAlive": true,
+		"clan": "",
+		"physicalTraits": ["Black Hair", "Black Eye"]
+	},
+	{
+		"name" : "Cheryl",
+		"gender": "female",
+		"firstName": "Cheryl",
+		"lastName": "Daniels",
+		"dateOfBirth": "10.06.1974",
+		"dateOfDeath": "",
+		"isAlive": true,
+		"clan": "",
+		"medicalCondition": ["Color Blindness","Brain tumour"],
+		"physicalTraits": ["Red Hair", "Green Eye"]
+	},
+
+	{
+		"name" : "Jason",
+		"gender": "male",
+		"firstName": "Jason",
+		"lastName": "Daniels",
+		"dateOfBirth": "12.06.1964",
+		"dateOfDeath": "",
+		"isAlive": true,
+		"clan": "",
+		"medicalCondition": ["Asthma"],
+		"physicalTraits": ["Red Hair", "Blue Eye"]
+	},
+	{
 		"name" : "Kate",
 		"gender": "female",
 		"firstName": "Kate",

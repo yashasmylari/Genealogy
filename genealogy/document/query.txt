@@ -34,18 +34,9 @@ Person {
 
 
 // User Story #2
-MATCH (p1:Person {name: "Roy"}), (p2:Person {name: "Jack"}),
-path = shortestpath((p1)-[:FATHER_OF | :MOTHER_OF |:MARRIED_TO *]-(p2))
+MATCH (p1:Person {name: "Roy"}), (p2:Person {name: "Hugh"}),
+path = allShortestPaths((p1)-[:FATHER_OF | :MOTHER_OF |:MARRIED_TO *]-(p2))
 RETURN path
-// ---->>>> Need to add more data
-/*
--> Jason >> Son of >> Kate and Jack
-   -> Cheryl >> Married to >> Jason
-      -> Steve >> Son of >> Jason and Cheryl
-	  -> Melissa >> Married >> Steve
-	     -> Hugh >> Son of Steve and Melissa
-// After adding more data, just change the name in the query. Complete
-*/
 
 
 
@@ -59,10 +50,10 @@ RETURN k,r,l
 
 
 // User Story #4 
-MATCH (k:Person)-[r:FATHER_OF | MOTHER_OF *1..7 ]-(l:Person)
-WHERE k.name = "Jason Smith" AND
-	ANY (x IN k.locations WHERE x =~ ".*Education.*" OR x =~ ".*Heidelberg.*"  )
-RETURN k, k.name, k.locations
+MATCH path = shortestpath((k:Person)-[r:FATHER_OF | MOTHER_OF ]-(l:Person))
+WHERE k.name = "Jason Smith" AND NOT l.name ="Jason Smith" AND
+	ANY (x IN l.locations WHERE x =~ ".*Employment.*" AND x =~ ".*Heidelberg.*"  )
+RETURN path, l.name, l.locations
 
 
 
@@ -76,16 +67,18 @@ WHERE n.religion = "Sikh" AND n.clan = "Singh" AND n.residence =~ ".*Heidelberg.
 RETURN n.name, n.residence
 
 
-
-// Sub Story 2
-// Dependent on the data of 'User Story 2'
-
+// Sub Story 4
+// Written in MongoDb
 
 
+// Sub Story 3
+// >> Father's Side >> Greg >> Till Level 5
+MATCH (p1:Person {name: "Greg"}), (p2:Person {name: "Hugh"}),
+path = shortestpath((p1)-[:FATHER_OF | :MOTHER_OF |:MARRIED_TO *1..5]-(p2))
+RETURN path
+// >> Mother's Side >> Angelina >> Till Level 4
+MATCH (p1:Person {name: "Angelina"}), (p2:Person {name: "Hugh"}),
+path = shortestpath((p1)-[:FATHER_OF | :MOTHER_OF |:MARRIED_TO *1..4]-(p2))
+RETURN path
 
-
-// To find the relationship
-MATCH (n:Person)
-WHERE single(x IN n.medicalCondition WHERE x = "Asthma")
-RETURN n
 

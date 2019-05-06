@@ -53,5 +53,81 @@
 		"person1" : "Rita",
 		"person2" : "Angelina",
 		"relation" : "child"
+	},
+	{
+		"person1" : "Jason",
+		"person2" : "Kate",
+		"relation" : "child"
+	}
+	,
+	{
+		"person1" : "Jason",
+		"person2" : "Jack",
+		"relation" : "child"
+	},
+	{
+		"person1" : "Cheryl",
+		"person2" : "Jason",
+		"relation" : "married"
+	},
+	{
+		"person1" : "Steve",
+		"person2" : "Jason",
+		"relation" : "child"
+	},
+	{
+		"person1" : "Steve",
+		"person2" : "Cheryl",
+		"relation" : "child"
+	},
+	{
+		"person1" : "Melissa",
+		"person2" : "Steve",
+		"relation" : "married"
+	},
+	{
+		"person1" : "Hugh",
+		"person2" : "Steve",
+		"relation" : "child"
+	},
+	{
+		"person1" : "Hugh",
+		"person2" : "Melissa",
+		"relation" : "child"
+	},
+	
+	
+	{
+		"person1" : "Melissa",
+		"person2" : "Hugh",
+		"relation" : "parent"
+	},
+	{
+		"person1" : "Steve",
+		"person2" : "Hugh",
+		"relation" : "parent"
+	},
+	
+	{
+		"person1" : "Cheryl",
+		"person2" : "Steve",
+		"relation" : "parent"
+	},
+	
+	{
+		"person1" : "Jason",
+		"person2" : "Steve",
+		"relation" : "parent"
+	},
+	
+	{
+		"person1" : "Jack",
+		"person2" : "Jason",
+		"relation" : "parent"
+	},
+	{
+		"person1" : "Kate",
+		"person2" : "Jason",
+		"relation" : "parent"
 	}
 ]
