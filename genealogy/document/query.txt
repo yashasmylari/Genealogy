@@ -10,16 +10,20 @@ Person {
 	String placeOfBirth;
 	Boolean isAlive;
 	String dateOfDeath;
-	String region;
-	String language;
+	String imageUrl;
+	String imageData;
+	String residence;
+	String nationality;
 	String religion;
 	String clan;
 	String ethnicity;
 	String occupation;
-	String physicalTraits;
 	String education;
-	String medicalCondition;
-	String specialCharacteristic;
+	String[] locations;
+	String[] languages;
+	String[] physicalTraits;
+	String[] medicalCondition;
+	String[] specialCharacteristic;
 }
 
 
