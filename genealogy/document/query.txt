@@ -72,13 +72,10 @@ RETURN n.name, n.residence
 
 
 // Sub Story 3
-// >> Father's Side >> Greg >> Till Level 5
-MATCH (p1:Person {name: "Greg"}), (p2:Person {name: "Hugh"}),
-path = shortestpath((p1)-[:FATHER_OF | :MOTHER_OF |:MARRIED_TO *1..5]-(p2))
+// >> Mother's Side >> Angelina >> Till 2 Generations
+// >> Father's Side >> Greg >> Till 3 Generations
+MATCH (p1:Person), (p2:Person {name: "Hugh"}),
+path = shortestpath((p1)-[:FATHER_OF | :MOTHER_OF *1..10]-(p2))
+WHERE p1.name = "Angelina" OR p1.name = "Greg"
 RETURN path
-// >> Mother's Side >> Angelina >> Till Level 4
-MATCH (p1:Person {name: "Angelina"}), (p2:Person {name: "Hugh"}),
-path = shortestpath((p1)-[:FATHER_OF | :MOTHER_OF |:MARRIED_TO *1..4]-(p2))
-RETURN path
-
 
