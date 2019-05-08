@@ -26,7 +26,7 @@ MATCH path = (:Person) - [:RESIDENCE] -> (:Province) RETURN path
 
 
 
-/* ***************************** RESIDENCE ***************************** */
+/* ***************************** MIGRATION ***************************** */
 
 MATCH
   (p1:Person),
