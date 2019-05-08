@@ -1,5 +1,100 @@
+
 CREATE
-(Texas:State{name:"Texas",country:"USA"}),
-(California:State{name:"California",country:"USA"}),
-(Heidelberg:State{name:"Heidelberg",country:"Germany"})
+
+// >>>>> PROVINCE <<<<<
+(Brandenburg:Province{name:"Brandenburg",country:"Germany"}),
+(Saxony:Province{name:"Saxony",country:"Germany"}),
+(BadenWurttemberg:Province{name:"Baden Wurttemberg",country:"Germany"}),
+(Bavaria:Province{name:"Bavaria",country:"Germany"}),
+(Hamburg:Province{name:"Hamburg",country:"Germany"}),
+(Texas:Province{name:"Texas",country:"USA"}),
+(California:Province{name:"California",country:"USA"}),
+(Michigan:Province{name:"Michigan",country:"USA"}),
+(Florida:Province{name:"Florida",country:"USA"}),
+(Alabama:Province{name:"Alabama",country:"USA"}),
+(Gujurat:Province{name:"Gujurat",country:"India"}),
+(Karnataka:Province{name:"Karnataka",country:"India"}),
+(Quebec:Province{name:"Quebec",country:"Canada"}),
+(Toronto:Province{name:"Toronto",country:"Canada"}),
+(Victoria:Province{name:"Victoria",country:"Australia"}),
+
+// >>>>> COUNTRY <<<<<
+(Germany:Country{name:"Germany"}),
+(USA:Country{name:"USA"}),
+(India:Country{name:"India"}),
+(Canada:Country{name:"Canada"}),
+(Australia:Country{name:"Australia"});
+
+
+
+
+
+
+
+
+MATCH
+  (c1:Country), (c2:Country), (c3:Country), (c4:Country), (c5:Country),
+  // Germany
+  (c1p1:Province), (c1p2:Province), (c1p3:Province), (c1p4:Province), (c1p5:Province),
+  // USA 
+  (c2p1:Province), (c2p2:Province), (c2p3:Province), (c2p4:Province), (c2p5:Province),
+  // India
+  (c3p1:Province), (c3p2:Province),
+  // Canada 
+  (c4p1:Province), (c4p2:Province),
+  // Australia 
+  (c5p1:Province)
+  
+WHERE
+  c1.name = "Germany"
+  AND  c2.name = "USA"
+  AND  c3.name = "India"
+  AND  c4.name = "Canada"
+  AND  c5.name = "Australia"
+  // Germany
+  AND  c1p1.name = "Brandenburg"
+  AND  c1p2.name = "Saxony"
+  AND  c1p3.name = "Baden Wurttemberg"
+  AND  c1p4.name = "Bavaria"
+  AND  c1p5.name = "Hamburg"
+  // USA
+  AND  c2p1.name = "Texas"
+  AND  c2p2.name = "California"
+  AND  c2p3.name = "Michigan"
+  AND  c2p4.name = "Florida"
+  AND  c2p5.name = "Alabama"
+  // India
+  AND  c3p1.name = "Gujurat"
+  AND  c3p2.name = "Karnataka"
+  // Canada
+  AND  c4p1.name = "Quebec"
+  AND  c4p2.name = "Toronto"
+  // Australia
+  AND  c5p1.name = "Victoria"
+
+CREATE
+  // Germany Relationship
+  (c1)-[:CONTAINS]->(c1p1),
+  (c1)-[:CONTAINS]->(c1p2),
+  (c1)-[:CONTAINS]->(c1p3),
+  (c1)-[:CONTAINS]->(c1p4),
+  (c1)-[:CONTAINS]->(c1p5),
+  // USA Relationship
+  (c2)-[:CONTAINS]->(c2p1),
+  (c2)-[:CONTAINS]->(c2p2),
+  (c2)-[:CONTAINS]->(c2p3),
+  (c2)-[:CONTAINS]->(c2p4),
+  (c2)-[:CONTAINS]->(c2p5),
+  // India Relationship
+  (c3)-[:CONTAINS]->(c3p1),
+  (c3)-[:CONTAINS]->(c3p2),
+  // Canada Relationship
+  (c4)-[:CONTAINS]->(c4p1),
+  (c4)-[:CONTAINS]->(c4p2),
+  // Australia Relationship
+  (c5)-[:CONTAINS]->(c5p1)
 ;
+
+
+
+MATCH path = (:Country) - [:CONTAINS] -> (:Province) RETURN path
