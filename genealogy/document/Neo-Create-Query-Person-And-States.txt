@@ -1,0 +1,87 @@
+
+
+
+/* ***************************** RESIDENCE ***************************** */
+MATCH
+  (p1:Person),
+  (pr1:Province),
+  (p2:Person),
+  (pr2:Province)
+  
+WHERE
+  p1.name = "Caroline Smith"
+  AND pr1.name = "Baden Wurttemberg"
+  AND p2.name = "Nelson Smith"
+  AND pr2.name = "Baden Wurttemberg"
+CREATE
+  (p1) - [:RESIDENCE] -> (pr1),
+  (p2) - [:RESIDENCE] -> (pr2)
+
+
+
+
+MATCH path = (:Person) - [:RESIDENCE] -> (:Province) RETURN path
+
+
+
+
+
+/* ***************************** RESIDENCE ***************************** */
+
+MATCH
+  (p1:Person),
+  (p1pr1:Province),
+  (p1pr2:Province),
+  (p1pr3:Province),
+  
+  (p2:Person),
+  (p2pr1:Province),
+  (p2pr2:Province),
+  (p2pr3:Province),
+  
+  (p3:Person),
+  (p3pr1:Province),
+  (p3pr2:Province),
+
+  (p4:Person),
+  (p4pr1:Province),
+  (p4pr2:Province),
+  (p4pr3:Province)
+  
+WHERE
+  p1.name = "Caroline Smith"
+  AND p1pr1.name = "Texas"
+  AND p1pr2.name = "California"
+  AND p1pr3.name = "Baden Wurttemberg"
+  
+  AND p2.name = "Nelson Smith"
+  AND p2pr1.name = "Victoria"
+  AND p2pr2.name = "California"
+  AND p2pr3.name = "Baden Wurttemberg"
+  
+  AND p3.name = "Anna"
+  AND p3pr1.name = "Baden Wurttemberg"
+  AND p3pr2.name = "Salzburg"
+
+  
+  AND p4.name = "Jason Smith"
+  AND p4pr1.name = "Baden Wurttemberg"
+  AND p4pr2.name = "Bavaria"
+  AND p4pr3.name = "Baden Wurttemberg"
+
+CREATE
+  (p1) - [:LIVED{reason:"Born",from:"1924",till:"1954"}] -> (p1pr1),
+  (p1) - [:LIVED{reason:"Employment",from:"1954",till:"1964"}] -> (p1pr2),
+  (p1) - [:LIVED{reason:"Marriage",from:"1964",till:"1995"}] -> (p1pr3),
+
+  (p2) - [:LIVED{reason:"Born",from:"1922",till:"1945"}] -> (p2pr1),
+  (p2) - [:LIVED{reason:"Employment",from:"1945",till:"1964"}] -> (p2pr2),
+  (p2) - [:LIVED{reason:"Employment",from:"1964",till:"2000"}] -> (p2pr3),
+
+  (p3) - [:LIVED{reason:"Born",from:"1993",till:"2013"}] -> (p3pr1),
+  (p3) - [:LIVED{reason:"Education",from:"2013",till:"Present"}] -> (p3pr2),
+
+  (p4) - [:LIVED{reason:"Born",from:"1989",till:"2015"}] -> (p4pr1),
+  (p4) - [:LIVED{reason:"Education",from:"2015",till:"2017"}] -> (p4pr2),
+  (p4) - [:LIVED{reason:"Medical Treatment",from:"2017",till:"Present"}] -> (p4pr3)
+

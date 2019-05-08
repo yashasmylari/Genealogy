@@ -14,11 +14,11 @@
 		"language": ["English"],
 		"nationality": "American" ,
 		"religion": "Christian",
-		"residence": "Heidelberg",
+		"residence": "Baden Wurttemberg",
 		"locations": [
 			"||Texas,USA||1924-1954||Born||",
 			"||California,USA||1954-1964||Employment||",
-			"||Heidelberg,Germany||1964-1995||Marriage||"
+			"||Baden Wurttemberg,Germany||1964-1995||Marriage||"
 		]
 	},
 	
@@ -28,7 +28,7 @@
 		"firstName": "Nelson",
 		"lastName": "Smith",
 		"dateOfBirth": "17.08.1922",
-		"placeOfBirth": "Heidelberg" ,
+		"placeOfBirth": "Baden Wurttemberg" ,
 		"dateOfDeath": "08.03.2000",
 		"isAlive": false,
 		"community": "",
@@ -36,11 +36,11 @@
 		"language": ["English","Dutch","German"],
 		"nationality": "Dutch" ,
 		"religion": "Christian",
-		"residence": "Heidelberg",	
+		"residence": "Baden Wurttemberg",	
 		"locations": [
-			"||Amsterdam,Netherlands||1922-1945||Born||",
+			"||Victoria,Australia||1922-1945||Born||",
 			"||California,USA||1945-1964||Employment||",
-			"||Heidelberg,Germany||1964-2000||Employment||"
+			"||Baden Wurttemberg,Germany||1964-2000||Employment||"
 		]
 	},
 	
@@ -51,7 +51,7 @@
 		"firstName": "Anna",
 		"lastName": "Smith",
 		"dateOfBirth": "11.06.1993",
-		"placeOfBirth": "Heidelberg" ,
+		"placeOfBirth": "Baden Wurttemberg" ,
 		"dateOfDeath": "",
 		"isAlive": false,
 		"community": "",
@@ -61,7 +61,7 @@
 		"religion": "Christian",
 		"residence": "salzburg",	
 		"locations": [
-			"||Heidelberg,Germany||1993-2013||Born||",
+			"||Baden Wurttemberg,Germany||1993-2013||Born||",
 			"||Salzburg,Austria||2013-till present||Education||"
 		]
 	},
@@ -72,7 +72,7 @@
 		"firstName": "Jason",
 		"lastName": "Smith",
 		"dateOfBirth": "11.06.1989",
-		"placeOfBirth": "Heidelberg",
+		"placeOfBirth": "Baden Wurttemberg",
 		"dateOfDeath": "",
 		"isAlive": false,
 		"community": "",
@@ -80,11 +80,11 @@
 		"language": ["English","German"],
 		"nationality": "German" ,
 		"religion": "Christian",
-		"residence": "Heidelberg",
+		"residence": "Baden Wurttemberg",
 		"locations": [
-			"||Heidelberg,Germany||1989-2015||B||",
-			"||Berlin,Germany||2015-2017||Education||",
-			"||Heidelberg,Germany||2017-till present||Medical Treatment||"]
+			"||Baden Wurttemberg,Germany||1989-2015||B||",
+			"||Bavaria,Germany||2015-2017||Education||",
+			"||Baden Wurttemberg,Germany||2017-till present||Medical Treatment||"]
 	}
 
 ]
