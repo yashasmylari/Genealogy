@@ -3,6 +3,14 @@
 
 CREATE
 
+// >>>>> COUNTRY <<<<<
+(Germany:Country{name:"Germany"}),
+(USA:Country{name:"USA"}),
+(India:Country{name:"India"}),
+(Canada:Country{name:"Canada"}),
+(Australia:Country{name:"Australia"}),
+(Salzburg:Province{name:"Salzburg",country:"Austria"}),
+
 // >>>>> PROVINCE <<<<<
 (Brandenburg:Province{name:"Brandenburg",country:"Germany"}),
 (Saxony:Province{name:"Saxony",country:"Germany"}),
@@ -19,15 +27,7 @@ CREATE
 (Quebec:Province{name:"Quebec",country:"Canada"}),
 (Toronto:Province{name:"Toronto",country:"Canada"}),
 (Victoria:Province{name:"Victoria",country:"Australia"}),
-
-// >>>>> COUNTRY <<<<<
-(Germany:Country{name:"Germany"}),
-(USA:Country{name:"USA"}),
-(India:Country{name:"India"}),
-(Canada:Country{name:"Canada"}),
-(Australia:Country{name:"Australia"});
-
-
+(Austria:Country{name:"Austria"});
 
 
 
@@ -35,7 +35,7 @@ CREATE
 
 
 MATCH
-  (c1:Country), (c2:Country), (c3:Country), (c4:Country), (c5:Country),
+  (c1:Country), (c2:Country), (c3:Country), (c4:Country), (c5:Country), (c6:Country),
   // Germany
   (c1p1:Province), (c1p2:Province), (c1p3:Province), (c1p4:Province), (c1p5:Province),
   // USA 
@@ -45,7 +45,9 @@ MATCH
   // Canada 
   (c4p1:Province), (c4p2:Province),
   // Australia 
-  (c5p1:Province)
+  (c5p1:Province),
+  // Austria 
+  (c6p1:Province)
   
 WHERE
   c1.name = "Germany"
@@ -53,6 +55,7 @@ WHERE
   AND  c3.name = "India"
   AND  c4.name = "Canada"
   AND  c5.name = "Australia"
+  AND  c6.name = "Austria"
   // Germany
   AND  c1p1.name = "Brandenburg"
   AND  c1p2.name = "Saxony"
@@ -73,6 +76,8 @@ WHERE
   AND  c4p2.name = "Toronto"
   // Australia
   AND  c5p1.name = "Victoria"
+  // Austria
+  AND  c6p1.name = "Salzburg"
 
 CREATE
   // Germany Relationship
@@ -94,7 +99,9 @@ CREATE
   (c4)-[:CONTAINS]->(c4p1),
   (c4)-[:CONTAINS]->(c4p2),
   // Australia Relationship
-  (c5)-[:CONTAINS]->(c5p1)
+  (c5)-[:CONTAINS]->(c5p1),
+  // Austria Relationship
+  (c6)-[:CONTAINS]->(c6p1)
 ;
 
 

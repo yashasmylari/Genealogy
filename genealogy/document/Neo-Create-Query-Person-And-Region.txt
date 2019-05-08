@@ -6,22 +6,26 @@ MATCH
   (p1:Person),
   (pr1:Province),
   (p2:Person),
-  (pr2:Province)
+  (pr2:Province),
+  (p3:Person),
+  (pr3:Province),
+  (p4:Person),
+  (pr4:Province)
   
 WHERE
   p1.name = "Caroline Smith"
   AND pr1.name = "Baden Wurttemberg"
   AND p2.name = "Nelson Smith"
   AND pr2.name = "Baden Wurttemberg"
+  AND p3.name = "Anna"
+  AND pr3.name = "Salzburg"
+  AND p4.name = "Jason Smith"
+  AND pr4.name = "Baden Wurttemberg"
 CREATE
   (p1) - [:RESIDENCE] -> (pr1),
-  (p2) - [:RESIDENCE] -> (pr2)
-
-
-
-
-MATCH path = (:Person) - [:RESIDENCE] -> (:Province) RETURN path
-
+  (p2) - [:RESIDENCE] -> (pr2),
+  (p3) - [:RESIDENCE] -> (pr3),
+  (p4) - [:RESIDENCE] -> (pr4);
 
 
 
