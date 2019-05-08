@@ -200,19 +200,21 @@ public class Person extends PersonAttributes {
 			.put("dateOfDeath", dateOfDeath)
 			.put("imageUrl", imageUrl)
 			.put("imageUrl", imageData)
-			.put("residence", residence)
+			.put("occupation", occupation)
+			.put("education", education);
+			/*
+			jsonObject.put("residence", residence)
 			.put("nationality", nationality)
 			.put("religion", religion)
 			.put("religion", religion)
 			.put("clan", clan)
 			.put("ethnicity", ethnicity)
-			.put("occupation", occupation)
-			.put("education", education)
 			.put("locations", Arrays.toString(locations))
 			.put("languages", Arrays.toString(languages))
 			.put("physicalTraits", Arrays.toString(physicalTraits))
 			.put("medicalCondition", Arrays.toString(medicalCondition))
 			.put("specialCharacteristic", Arrays.toString(specialCharacteristic));
+			*/
 		}
 		catch (JSONException e) {
 			e.printStackTrace();

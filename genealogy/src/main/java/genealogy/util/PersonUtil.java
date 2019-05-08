@@ -134,6 +134,15 @@ public final class PersonUtil {
 		try { person.setImageData(jsonPerson.getString("imageData")); }
 		catch(Exception ex) { System.err.println("Image Data not defined for >> " + name); }
 
+		// Occupation
+		try { person.setOccupation(jsonPerson.getString("occupation")); }
+		catch(Exception ex) { System.err.println("Occupation not defined for >> " + name); }
+
+		// Education
+		try { person.setEducation(jsonPerson.getString("education")); }
+		catch(Exception ex) { System.err.println("Education not defined for >> " + name); }
+
+		/*
 		// Residence
 		try { person.setResidence(jsonPerson.getString("residence")); }
 		catch(Exception ex) { System.err.println("Residence not defined for >> " + name); }
@@ -154,14 +163,6 @@ public final class PersonUtil {
 		try { person.setEthnicity(jsonPerson.getString("ethnicity")); }
 		catch(Exception ex) { System.err.println("Ethnicity not defined for >> " + name); }
 
-		// Occupation
-		try { person.setOccupation(jsonPerson.getString("occupation")); }
-		catch(Exception ex) { System.err.println("Occupation not defined for >> " + name); }
-
-		// Education
-		try { person.setEducation(jsonPerson.getString("education")); }
-		catch(Exception ex) { System.err.println("Education not defined for >> " + name); }
-
 		// Medical Condition
 		try { person.setLocations(Common.jsonArrayToStringArray(jsonPerson.getJSONArray("locations"))); }
 		catch(Exception ex) { System.err.println("Medical Condition not defined for >> " + name); }
@@ -181,6 +182,7 @@ public final class PersonUtil {
 		// Special Characteristic
 		try { person.setSpecialCharacteristic(Common.jsonArrayToStringArray(jsonPerson.getJSONArray("specialCharacteristic"))); }
 		catch(Exception ex) { System.err.println("Special Characteristic not defined for >> " + name); }
+		*/
 
 		return person;
 	}
@@ -224,7 +226,7 @@ public final class PersonUtil {
 			if(searchedNodes.contains(searched))
 				continue;
 
-			String relationKey = node.getName()+"-"+personRel.getName();
+			String relationKey = personRel.getName();
 			String rel = jsonRelation.getString(relationKey);
 
 			// Set Previous Relation
@@ -253,7 +255,7 @@ public final class PersonUtil {
 			if(scannedNodes.contains(scanned))
 				continue;
 
-			String relationKey = node.getName()+"-"+personRel.getName();
+			String relationKey = personRel.getName();
 			String rel = jsonRelation.getString(relationKey);
 
 			// Set Previous Relation
@@ -354,6 +356,16 @@ public final class PersonUtil {
 				personNode.setImageData(person.getImageData());
 				attributeSet = true;
 			}
+			if(person.getOccupation()!=null) {
+				personNode.setOccupation(person.getOccupation());
+				attributeSet = true;
+			}
+			if(person.getEducation()!=null) {
+				personNode.setEducation(person.getEducation());
+				attributeSet = true;
+			}
+
+			/*
 			if(person.getResidence()!=null) {
 				personNode.setResidence(person.getResidence());
 				attributeSet = true;
@@ -372,14 +384,6 @@ public final class PersonUtil {
 			}
 			if(person.getEthnicity()!=null) {
 				personNode.setEthnicity(person.getEthnicity());
-				attributeSet = true;
-			}
-			if(person.getOccupation()!=null) {
-				personNode.setOccupation(person.getOccupation());
-				attributeSet = true;
-			}
-			if(person.getEducation()!=null) {
-				personNode.setEducation(person.getEducation());
 				attributeSet = true;
 			}
 
@@ -403,6 +407,7 @@ public final class PersonUtil {
 				personNode.setSpecialCharacteristic(person.getSpecialCharacteristic());
 				attributeSet = true;
 			}
+			*/
 			if(attributeSet)
 				return personNode;
 			return null;

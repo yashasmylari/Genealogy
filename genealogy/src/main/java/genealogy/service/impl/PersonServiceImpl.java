@@ -109,7 +109,7 @@ public class PersonServiceImpl implements PersonService {
 
 			
 			String relationMap = pb1.getRelationMap();
-			String relationKey = pb1.getName()+"-"+pb2.getName();
+			String relationKey = pb2.getName();
 			JSONObject jsonRelation = new JSONObject(relationMap);
 
 			if(jsonRelation.has(relationKey))

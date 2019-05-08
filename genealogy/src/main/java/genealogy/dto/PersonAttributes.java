@@ -12,18 +12,32 @@ public class PersonAttributes {
 	String dateOfDeath;
 	String imageUrl;
 	String imageData;
+	String occupation;
+	String education;
+
+
+	/* ***** SEPERATE ALL OF THE BELOW INTO DIFFERENT NODES ***** */
+
+	/*
 	String residence;
 	String nationality;
 	String religion;
 	String clan;
 	String ethnicity;
-	String occupation;
-	String education;
+
+	
 	String[] locations;
 	String[] languages;
 	String[] physicalTraits;
 	String[] medicalCondition;
 	String[] specialCharacteristic;
+
+	// New
+	String[] hobbies;
+	String[] cusine;
+	String[] favouriteGenre;
+	String[] favouriteSports;
+	*/
 
 
 	public String getName() {
@@ -94,24 +108,26 @@ public class PersonAttributes {
 	public void setImageData(String imageData) {
 		this.imageData = imageData;
 	}
+	public String getOccupation() {
+		return occupation;
+	}
+	public void setOccupation(String occupation) {
+		this.occupation = occupation;
+	}
+
+	public String getEducation() {
+		return education;
+	}
+	public void setEducation(String education) {
+		this.education = education;
+	}
+
+	/*
 	public String getResidence() {
 		return residence;
 	}
 	public void setResidence(String region) {
 		this.residence = region;
-	}
-
-	public String getNationality() {
-		return nationality;
-	}
-	public void setNationality(String nationality) {
-		this.nationality = nationality;
-	}
-	public String[] getLanguages() {
-		return languages;
-	}
-	public void setLanguages(String[] languages) {
-		this.languages = languages;
 	}
 
 	public String getReligion() {
@@ -128,18 +144,11 @@ public class PersonAttributes {
 		this.clan = clan;
 	}
 
-	public String getEthnicity() {
-		return ethnicity;
+	public String getNationality() {
+		return nationality;
 	}
-	public void setEthnicity(String ethnicity) {
-		this.ethnicity = ethnicity;
-	}
-
-	public String getOccupation() {
-		return occupation;
-	}
-	public void setOccupation(String occupation) {
-		this.occupation = occupation;
+	public void setNationality(String nationality) {
+		this.nationality = nationality;
 	}
 
 	public String[] getPhysicalTraits() {
@@ -149,11 +158,18 @@ public class PersonAttributes {
 		this.physicalTraits = physicalTraits;
 	}
 
-	public String getEducation() {
-		return education;
+	public String[] getLanguages() {
+		return languages;
 	}
-	public void setEducation(String education) {
-		this.education = education;
+	public void setLanguages(String[] languages) {
+		this.languages = languages;
+	}
+
+	public String getEthnicity() {
+		return ethnicity;
+	}
+	public void setEthnicity(String ethnicity) {
+		this.ethnicity = ethnicity;
 	}
 
 	public String[] getLocations() {
@@ -176,5 +192,6 @@ public class PersonAttributes {
 	public void setSpecialCharacteristic(String[] specialCharacteristic) {
 		this.specialCharacteristic = specialCharacteristic;
 	}
+	*/
 
 }
