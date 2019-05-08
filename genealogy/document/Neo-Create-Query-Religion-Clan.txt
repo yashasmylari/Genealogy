@@ -3,9 +3,82 @@
 
 CREATE
 
-// >>>>> COUNTRY <<<<<
+// >>>>> Religion <<<<<
+
 (Sikhism:Religion{name:"Sikhism"}),
 (Hinduism:Religion{name:"Hinduism"}),
+(Christinity:Religion{name:"Christinity"}),
+(Islam:Religion{name:"Islam"}),
+(Jainism:Religion{name:"Jainism"}),
+(Buddhism:Religion{name:"Buddhism"}),
+
+
+// >>>>> Clan <<<<<
+
 (Jatt:Clan{name:"Jatt",religion:"Sikhism"}),
 (Kshatriya:Clan{name:"Kshatriya",religion:"Hinduism"});
+(Pathan:Clan{name:"Pathan",religion:"Islam"});
+(Protestantism:Clan{name:"Protestantism",religion:"Christinity"});
+(Catholicism:Clan{name:"Catholicism",religion:"Christinity"});
+
+
+
+
+
+
+
+
+
+
+MATCH
+  (r1:Religion), (r2:Religion), (r3:Religion), (r4:Religion), (r5:Religion), (r6:Religion),
+  // Sikhism
+  (r1c1:Clan), 
+  // Hinduism 
+  (r2c1:Clan),
+  // Christinity
+  (r3c1:Clan), (r3c2:Clan),
+  // Islam 
+  (r4p1:Clan),
+  
+  
+WHERE
+  r1.name = "Sikhism"
+  AND  r2.name = "Hinduism"
+  AND  r3.name = "Christinity"
+  AND  r4.name = "Islam"
+  AND  r5.name = "Jainism"
+  AND  r6.name = "Buddhism"
+  
+  // Sikhism
+  AND  r1c1.name = "Jatt"
+  
+  // Hinduism
+  AND  r2c1.name = "Kshatriya"
+ 
+  // Christinity
+  AND  r3c1.name = "Protestantism"
+  AND  r3c2.name = "Catholicism"
+  
+  // Islam
+  AND  r4p1.name = "Pathan"
+  
+
+CREATE
+  // Sikhism Relationship
+  (r1)-[:FOLLOWING]->(r1c1),
+  
+  // Hinduism Relationship
+  (r2)-[:FOLLOWING]->(r2c1),
+  
+  // Christinity Relationship
+  (r3)-[:FOLLOWING]->(c3p1),
+  (r3)-[:FOLLOWING]->(c3p2),
+  // Islam Relationship
+  (r4)-[:FOLLOWING]->(r4p1)
+;
+
+
+
+MATCH path = (:Religion) - [:FOLLOWING] -> (:Clan) RETURN path
 
