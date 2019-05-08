@@ -1,0 +1,11 @@
+
+
+
+CREATE
+
+// >>>>> COUNTRY <<<<<
+(Sikhism:Religion{name:"Sikhism"}),
+(Hinduism:Religion{name:"Hinduism"}),
+(Jatt:Province{name:"Jatt",religion:"Sikhism"}),
+(Kshatriya:Religion{name:"Kshatriya",religion:"Hinduism"});
+
