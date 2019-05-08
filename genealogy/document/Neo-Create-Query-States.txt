@@ -1,0 +1,5 @@
+CREATE
+(Texas:State{name:"Texas",country:"USA"}),
+(California:State{name:"California",country:"USA"}),
+(Heidelberg:State{name:"Heidelberg",country:"Germany"})
+;

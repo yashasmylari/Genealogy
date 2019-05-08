@@ -104,6 +104,11 @@ public class PersonServiceImpl implements PersonService {
 			if(pb1==null || pb2==null)
 				return "one of the node is non existent";
 
+			String relation = "no relation";
+
+			/*
+			// NEED TO CHANGE THE LOGIC 
+			
 			StringBuilder sbTop = new StringBuilder();
 			sbTop.append("(").append(person1).append(":").append(pb1.getGender()).append(")");
 
@@ -121,8 +126,9 @@ public class PersonServiceImpl implements PersonService {
 			String relation = PersonUtil.searchRelationShip(relatedPerson, jsonRelation, sbTop.toString(), 1, personRepository, scannedNodes, new HashSet<>());
 			
 			if(relation.isEmpty())
-				return "no relation";
-			
+				return String relation = "no relation";
+			*/
+
 			return relation;
 		}
 		catch(Exception ex) {

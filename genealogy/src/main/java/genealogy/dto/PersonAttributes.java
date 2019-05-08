@@ -14,22 +14,21 @@ public class PersonAttributes {
 	String imageData;
 	String occupation;
 	String education;
+	String[] medicalCondition;
 
 
 	/* ***** SEPERATE ALL OF THE BELOW INTO DIFFERENT NODES ***** */
 
 	/*
-	String residence;
-	String nationality;
 	String religion;
 	String clan;
+	String residence;
+	String nationality;
 	String ethnicity;
 
-	
 	String[] locations;
 	String[] languages;
 	String[] physicalTraits;
-	String[] medicalCondition;
 	String[] specialCharacteristic;
 
 	// New
@@ -122,6 +121,13 @@ public class PersonAttributes {
 		this.education = education;
 	}
 
+	public String[] getMedicalCondition() {
+		return medicalCondition;
+	}
+	public void setMedicalCondition(String[] medicalCondition) {
+		this.medicalCondition = medicalCondition;
+	}
+
 	/*
 	public String getResidence() {
 		return residence;
@@ -177,13 +183,6 @@ public class PersonAttributes {
 	}
 	public void setLocations(String[] locations) {
 		this.locations = locations;
-	}
-
-	public String[] getMedicalCondition() {
-		return medicalCondition;
-	}
-	public void setMedicalCondition(String[] medicalCondition) {
-		this.medicalCondition = medicalCondition;
 	}
 
 	public String[] getSpecialCharacteristic() {

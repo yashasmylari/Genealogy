@@ -201,7 +201,8 @@ public class Person extends PersonAttributes {
 			.put("imageUrl", imageUrl)
 			.put("imageUrl", imageData)
 			.put("occupation", occupation)
-			.put("education", education);
+			.put("education", education)
+			.put("medicalCondition", Arrays.toString(medicalCondition));
 			/*
 			jsonObject.put("residence", residence)
 			.put("nationality", nationality)
@@ -212,7 +213,6 @@ public class Person extends PersonAttributes {
 			.put("locations", Arrays.toString(locations))
 			.put("languages", Arrays.toString(languages))
 			.put("physicalTraits", Arrays.toString(physicalTraits))
-			.put("medicalCondition", Arrays.toString(medicalCondition))
 			.put("specialCharacteristic", Arrays.toString(specialCharacteristic));
 			*/
 		}

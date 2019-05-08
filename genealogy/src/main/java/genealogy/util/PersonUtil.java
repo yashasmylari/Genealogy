@@ -142,6 +142,11 @@ public final class PersonUtil {
 		try { person.setEducation(jsonPerson.getString("education")); }
 		catch(Exception ex) { System.err.println("Education not defined for >> " + name); }
 
+		// Medical Condition
+		try { person.setMedicalCondition(Common.jsonArrayToStringArray(jsonPerson.getJSONArray("medicalCondition"))); }
+		catch(Exception ex) { System.err.println("Medical Condition not defined for >> " + name); }
+
+
 		/*
 		// Residence
 		try { person.setResidence(jsonPerson.getString("residence")); }
@@ -175,10 +180,6 @@ public final class PersonUtil {
 		try { person.setPhysicalTraits(Common.jsonArrayToStringArray(jsonPerson.getJSONArray("physicalTraits"))); }
 		catch(Exception ex) { System.err.println("Physical Traits not defined for >> " + name); }
 
-		// Medical Condition
-		try { person.setMedicalCondition(Common.jsonArrayToStringArray(jsonPerson.getJSONArray("medicalCondition"))); }
-		catch(Exception ex) { System.err.println("Medical Condition not defined for >> " + name); }
-
 		// Special Characteristic
 		try { person.setSpecialCharacteristic(Common.jsonArrayToStringArray(jsonPerson.getJSONArray("specialCharacteristic"))); }
 		catch(Exception ex) { System.err.println("Special Characteristic not defined for >> " + name); }
@@ -208,104 +209,6 @@ public final class PersonUtil {
 		sb.append("(").append(nextNode.getName()).append(":").append(nextNode.getGender()).append(")");
 
 		return sb.toString();
-	}
-
-
-
-	public static String searchRelationShip(RelatedPerson<Person, Person> nodes, JSONObject jsonRelation, String prevNodeRelations, int count,
-			PersonRepository personRepository, Set<String> scannedNodes, Set<String> searchedNodes)
-					throws JSONException {
-
-		Person node = nodes.getP1();
-		Person nextNode = nodes.getP2();
-
-		Set<Person> relationSet = mergeRelations(node);
-
-		for(Person personRel : relationSet) {
-			String searched = personRel.toString();
-			if(searchedNodes.contains(searched))
-				continue;
-
-			String relationKey = personRel.getName();
-			String rel = jsonRelation.getString(relationKey);
-
-			// Set Previous Relation
-			StringBuilder sbPrev = new StringBuilder(prevNodeRelations);
-			sbPrev.append(" >> [").append(rel).append("] >> ");
-			sbPrev.append("(").append(personRel.getName()).append(":").append(personRel.getGender()).append(")");
-
-			String relationMapSon = personRel.getRelationMap();
-			String relationKeySon = personRel.getName()+"-"+nextNode.getName();
-			JSONObject jsonChildRelation = new JSONObject(relationMapSon);
-
-			if(jsonChildRelation.has(relationKeySon))
-				return PersonUtil.strRelationship(sbPrev.toString(), jsonChildRelation, relationKeySon, nextNode);
-
-			searchedNodes.add(searched);
-		}
-
-
-		if(count>5) {
-			return "";
-		}
-
-		for(Person personRel : relationSet) {
-
-			String scanned = personRel.toString();
-			if(scannedNodes.contains(scanned))
-				continue;
-
-			String relationKey = personRel.getName();
-			String rel = jsonRelation.getString(relationKey);
-
-			// Set Previous Relation
-			StringBuilder sbPrev = new StringBuilder(prevNodeRelations);
-			sbPrev.append(" >> [").append(rel).append("] >> ");
-			sbPrev.append("(").append(personRel.getName()).append(":").append(personRel.getGender()).append(")");
-
-			String relationMapSon = personRel.getRelationMap();
-			JSONObject jsonChildRelation = new JSONObject(relationMapSon);
-
-			Person personRelDb = personRepository.findByName(personRel.getName());
-			scannedNodes.add(scanned);
-			RelatedPerson<Person, Person> relatedPerson = new RelatedPerson<Person, Person>(personRelDb, nextNode);
-			String relation = PersonUtil.searchRelationShip(relatedPerson, jsonChildRelation, sbPrev.toString(), ++count, personRepository, scannedNodes, searchedNodes);
-
-			if(!relation.isEmpty())
-				return relation;
-		}
-
-		return "";
-	}
-
-
-
-	/**
-	 * Merges all the related users.
-	 * 
-	 * @param node
-	 * @return
-	 */
-	public static Set<Person> mergeRelations(Person node) {
-		Set<Person> fatherOf = node.getFatherOf();
-		Set<Person> motherOf = node.getMotherOf();
-		Set<Person> sonOf = node.getSonOf();
-		Set<Person> daughterOf = node.getDaughterOf();
-		Set<Person> friendsWith = node.getFriendsWith();
-		Person marriedTo = node.getMarriedTo();
-
-		Set<Person> relationSet = new HashSet<>(fatherOf.size() + motherOf.size() + sonOf.size() + daughterOf.size() + friendsWith.size());
-		relationSet.add(marriedTo);
-		relationSet.addAll(fatherOf);
-		relationSet.addAll(motherOf);
-		relationSet.addAll(sonOf);
-		relationSet.addAll(daughterOf);
-		relationSet.addAll(friendsWith);
-
-		relationSet.remove(node);
-		relationSet.remove(null);
-
-		return relationSet;
 	}
 
 
@@ -364,6 +267,10 @@ public final class PersonUtil {
 				personNode.setEducation(person.getEducation());
 				attributeSet = true;
 			}
+			if(person.getMedicalCondition()!=null) {
+				personNode.setMedicalCondition(person.getMedicalCondition());
+				attributeSet = true;
+			}
 
 			/*
 			if(person.getResidence()!=null) {
@@ -397,10 +304,6 @@ public final class PersonUtil {
 			}
 			if(person.getLanguages()!=null) {
 				personNode.setLanguages(person.getLanguages());
-				attributeSet = true;
-			}
-			if(person.getMedicalCondition()!=null) {
-				personNode.setMedicalCondition(person.getMedicalCondition());
 				attributeSet = true;
 			}
 			if(person.getSpecialCharacteristic()!=null) {
