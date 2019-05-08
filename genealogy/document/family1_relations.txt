@@ -137,12 +137,6 @@
 
     },
     {
-		"person1" : "Brad",
-		"person2" : "Jennifer",
-		"relation" : "married"
-
-    },
-    {
 		"person1" : "Kate",
 		"person2" : "Euron",
 		"relation" : "child"
@@ -153,14 +147,10 @@
 		"relation" : "child"
     },
     {
-		"person1" : "Euron",
-		"person2" : "Kate",
-		"relation" : "parent"
-    },
-    {
-		"person1" : "Jessica",
-		"person2" : "Kate",
-		"relation" : "parent"
+		"person1" : "Brad",
+		"person2" : "Jennifer",
+		"relation" : "married"
+
     },
     {
 		"person1" : "Euron",
@@ -171,16 +161,6 @@
 		"person1" : "Euron",
 		"person2" : "Jennifer",
 		"relation" : "child"
-    },
-    {
-		"person1" : "Brad",
-		"person2" : "Euron",
-		"relation" : "parent"
-    },
-    {
-		"person1" : "Jennifer",
-		"person2" : "Euron",
-		"relation" : "parent"
     }
 	
 ]
