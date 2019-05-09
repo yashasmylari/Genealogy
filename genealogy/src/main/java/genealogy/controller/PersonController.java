@@ -40,7 +40,9 @@ public class PersonController {
 		try {
 			JSONObject person = new JSONObject(reqBody);
 			Person personModel = personService.addPerson(person);
-			return personModel.toString();
+			if(personModel!=null)
+				return personModel.toString();
+			return "{}";
 		}
 		catch(Exception ex) {
 			log.error("An error occurred while adding person", ex);
@@ -63,7 +65,8 @@ public class PersonController {
 			for(int i=0; i<jsonArray.length(); i++) {
 				JSONObject person = jsonArray.getJSONObject(i);
 				Person personModel = personService.addPerson(person);
-				jsonOutput.put(personModel.json());
+				if(personModel!=null)
+					jsonOutput.put(personModel.json());
 			}
 			return jsonOutput.toString();
 		}

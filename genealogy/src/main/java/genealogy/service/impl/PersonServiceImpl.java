@@ -7,6 +7,8 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
 import genealogy.dao.PersonRepository;
@@ -23,6 +25,8 @@ public class PersonServiceImpl implements PersonService {
 	@Autowired
 	PersonRepository personRepository;
 
+	@Autowired
+	StringRedisTemplate redisTemplate;
 
 
 	@Override
@@ -38,16 +42,22 @@ public class PersonServiceImpl implements PersonService {
 			String name = person.getString("name");
 			Person pb = personRepository.findByName(name);
 			Person p = PersonUtil.getPersonFromJsonString(person);
+			Person personNode;
 			if(pb==null) {
 				personRepository.save(p);
-				return personRepository.findByName(name);
+				personNode = personRepository.findByName(name);
 			}
 			else {
-				Person personNode = PersonUtil.setAttributeFromPerson(p, pb);
+				personNode = PersonUtil.setAttributeFromPerson(p, pb);
 				if(personNode!=null)
 					personRepository.save(personNode);
-				return personNode;
+				else
+					return null;
 			}
+
+			ValueOperations<String, String> values = redisTemplate.opsForValue();
+			values.set(personNode.getId().toString(), personNode.toString());
+			return personNode;
 		}
 		catch(Exception ex) {
 			log.error("An error occurred while adding person", ex);
