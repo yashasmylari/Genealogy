@@ -7,6 +7,7 @@ import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,7 @@ public class PersonServiceImpl implements PersonService {
 	@Autowired
 	PersonRepository personRepository;
 
-	@Autowired
+	@Autowired(required=false)
 	StringRedisTemplate redisTemplate;
 
 
@@ -55,8 +56,12 @@ public class PersonServiceImpl implements PersonService {
 					return null;
 			}
 
+			JSONObject jsonPerson = personNode.json();
+			log.info("\n"+jsonPerson);
+
 			ValueOperations<String, String> values = redisTemplate.opsForValue();
-			values.set(personNode.getId().toString(), personNode.toString());
+			values.set(personNode.getId().toString(), jsonPerson.toString());
+
 			return personNode;
 		}
 		catch(Exception ex) {
