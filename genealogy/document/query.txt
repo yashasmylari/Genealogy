@@ -46,6 +46,10 @@ RETURN path
 
 
 // User Story #3
+// The query is able to bring all the person in the family affected from
+// the Asthma Medical Condition within the family tree. If there is 
+// one or multiple missing link/person node without the medical,
+// those nodes are also fetched by the respective query.
 MATCH (k:Person)-[r:FATHER_OF | MOTHER_OF *1..7 ]-(l:Person)
 WHERE k.name = "Rita" AND SINGLE(x IN l.medicalCondition WHERE x = "Asthma")
 RETURN k,r,l
