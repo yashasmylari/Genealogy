@@ -22,9 +22,6 @@ public class Person {
 	@GeneratedValue
 	private Long id;
 
-	private String relation;
-	private String relationMap;
-
 	private String name;
 	private String gender;
 	private String firstName;
@@ -38,6 +35,9 @@ public class Person {
 	private String occupation;
 	private String education;
 	private String[] medicalCondition;
+
+	private String relation;
+	private String relationMap;
 
 
 	/* ***** SEPERATE ALL OF THE BELOW INTO DIFFERENT NODES ***** */
@@ -86,7 +86,11 @@ public class Person {
 	@Relationship(type = Relations.MARRIED_TO)
 	private Person marriedTo;
 
+	@Relationship(type = Relations.RESIDENCE)
+	private Province residence;
 
+	@Relationship(type = Relations.LIVED)
+	private Set<Province> lived;
 
 
 	public Person() {

@@ -1,6 +1,6 @@
 [
 	{
-		"person1" : "Geet Kaur",
+		"person1" : "Geet Bhatia Kaur",
 		"person2" : "Amanpreet Kaur",
 		"relation" : "parent"
 	},
@@ -30,12 +30,12 @@
 		"relation" : "parent"
 	},
 	{
-		"person1" : "Geet Kaur",
+		"person1" : "Geet Bhatia Kaur",
 		"person2" : "Karamjeet Singh",
 		"relation" : "married"
 	},
 	{
-		"person1" : "Geet Kaur",
+		"person1" : "Geet Bhatia Kaur",
 		"person2" : "Karamjeet Singh",
 		"relation" : "married"
 	},

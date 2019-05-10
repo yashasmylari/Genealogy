@@ -64,7 +64,7 @@
 	
 
 	{
-		"name" : "Geet Kaur",
+		"name" : "Geet Bhatia Kaur",
 		"gender": "female",
 		"firstName": "Geet",
 		"lastName": "Kaur",
