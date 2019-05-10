@@ -31,7 +31,6 @@ public class MongoApplication {
 			// save the image file into mongoDB
 			gfsFile.save();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

@@ -81,9 +81,8 @@ RETURN
 // User Story #5
 
 // Sub Story 1
-MATCH (n:Person)
-WHERE n.religion = "Sikh" AND n.clan = "Singh" AND n.residence =~ ".*Heidelberg.*"
-RETURN n.name, n.residence
+// Find Person from Same Clan using the label assigned to the person
+MATCH (p:Person:Khattar) RETURN p
 
 
 /* ******************** SUB STORY 2 ******************** */
