@@ -17,6 +17,7 @@ public final class Relations {
 	public static final String CONTAINS = "CONTAINS";
 	public static final String LIVED = "LIVED";
 	public static final String RESIDENCE = "RESIDENCE";
+	public static final String FOLLOWING = "FOLLOWING";
 
 	// RELATIONSHIP LABEL CONSTANTED
 	public static final String FATHER_OF = "FATHER_OF";

@@ -92,6 +92,9 @@ public class Person {
 	@Relationship(type = Relations.LIVED)
 	private Set<Province> lived;
 
+	@Relationship(type = Relations.FOLLOWING)
+	private Religion religion;
+
 
 	public Person() {
 		relationMap = "{}";

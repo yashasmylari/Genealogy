@@ -69,5 +69,5 @@ CREATE
 ;
 
 
-MATCH path = (:Clan) - [:FOLLOWING] -> (:Religion) RETURN path
+MATCH path = (:Person) - [:FOLLOWING] -> (:Religion) RETURN path
 
