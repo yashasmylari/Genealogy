@@ -42,6 +42,11 @@ MATCH (n:Person{name:"Leshya Singh"}) SET n.residence = "Toronto,Canada" RETURN 
 
 
 // User Story #2
+
+// Disconnect the family tree
+// Find the Starting and the Ending Nodes and Check if they are the same
+// Connect the ending nodes
+
 MATCH (p1:Person {name: "Roy"}), (p2:Person {name: "Hugh"}),
 path = allShortestPaths((p1)-[:FATHER_OF | :MOTHER_OF |:MARRIED_TO *]-(p2))
 RETURN path
@@ -62,10 +67,13 @@ RETURN k,r,l
 
 
 // User Story #4 
-MATCH path = shortestpath((k:Person)-[r:FATHER_OF | MOTHER_OF ]-(l:Person))
-WHERE k.name = "Jason Smith" AND NOT l.name ="Jason Smith" AND
-	ANY (x IN l.locations WHERE x =~ ".*Employment.*" AND x =~ ".*Heidelberg.*"  )
-RETURN path, l.name, l.locations
+// Jason wants check migration of his family tree
+// The migration relationship also shows migration year
+MATCH (p:Person) - [r:SON_OF |:DAUGHTER_OF] -> (p1:Person) - [l:LIVED] -> (pr:Province)
+WHERE
+  p.name = "Jason Smith"
+RETURN
+  p,r,p1,l,pr
 
 
 
