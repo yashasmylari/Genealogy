@@ -32,6 +32,10 @@ Person {
 
 
 // User Story #1 (Vivek)
+// View - Created
+MATCH (p:Person) WHERE p.lastName="Singh" OR p.lastName="Kaur" RETURN p
+
+// Update
 MATCH (n:Person{name:"Leshya Singh"}) SET n.residence = "Toronto,Canada" RETURN n.residence
 
 
