@@ -22,12 +22,6 @@ RETURN p;
 
 
 // ADD ALL THE BHATIA TO THE BHATIA CLAN
-MATCH (p:Person{lastName:"Bhatia"})
-SET p:Bhatia
-RETURN p;
-
-
-// ADD ALL THE BHATIA TO THE BHATIA CLAN
 MATCH (p:Person)
 WHERE p.name=~".*Bhatia.*" AND ( p.name=~".*Singh" OR  p.name=~".*Kaur" )
 SET p:Bhatia:Khattar

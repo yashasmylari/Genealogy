@@ -35,6 +35,7 @@ public class Person {
 	private String occupation;
 	private String education;
 	private String[] medicalCondition;
+	private String[] physicalTraits;
 
 	private String relation;
 	private String relationMap;
@@ -51,7 +52,6 @@ public class Person {
 
 	String[] locations;
 	String[] languages;
-	String[] physicalTraits;
 	String[] specialCharacteristic;
 
 	// New
@@ -245,7 +245,9 @@ public class Person {
 			.put("imageUrl", imageData)
 			.put("occupation", occupation)
 			.put("education", education)
-			.put("medicalCondition", Arrays.toString(medicalCondition));
+			// Arrays
+			.put("medicalCondition", Arrays.toString(medicalCondition))
+			.put("physicalTraits", Arrays.toString(physicalTraits))
 			/*
 			jsonObject.put("residence", residence)
 			.put("nationality", nationality)
@@ -255,9 +257,9 @@ public class Person {
 			.put("ethnicity", ethnicity)
 			.put("locations", Arrays.toString(locations))
 			.put("languages", Arrays.toString(languages))
-			.put("physicalTraits", Arrays.toString(physicalTraits))
-			.put("specialCharacteristic", Arrays.toString(specialCharacteristic));
+			.put("specialCharacteristic", Arrays.toString(specialCharacteristic))
 			*/
+			;
 		}
 		catch (JSONException e) {
 			e.printStackTrace();
@@ -355,6 +357,13 @@ public class Person {
 		this.medicalCondition = medicalCondition;
 	}
 
+	public String[] getPhysicalTraits() {
+		return physicalTraits;
+	}
+	public void setPhysicalTraits(String[] physicalTraits) {
+		this.physicalTraits = physicalTraits;
+	}
+
 	/*
 	public String getResidence() {
 		return residence;
@@ -382,13 +391,6 @@ public class Person {
 	}
 	public void setNationality(String nationality) {
 		this.nationality = nationality;
-	}
-
-	public String[] getPhysicalTraits() {
-		return physicalTraits;
-	}
-	public void setPhysicalTraits(String[] physicalTraits) {
-		this.physicalTraits = physicalTraits;
 	}
 
 	public String[] getLanguages() {

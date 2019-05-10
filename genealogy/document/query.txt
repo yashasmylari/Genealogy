@@ -71,8 +71,50 @@ WHERE n.religion = "Sikh" AND n.clan = "Singh" AND n.residence =~ ".*Heidelberg.
 RETURN n.name, n.residence
 
 
-// Sub Story 4
-// Written in MongoDb
+/* ******************** SUB STORY 2 ******************** */
+
+// Finding relation between the people 
+// with similar physical traits and trying to find the common things among them
+
+
+// Creates a relationship between the 'Person' nodes with similar physical traits
+MATCH
+  (p1:Person), (p2:Person)
+WHERE 
+  id(p1) > id(p2) 
+  AND ALL (phy in p1.physicalTraits WHERE phy IN p2.physicalTraits)
+CREATE
+  (p1)-[r1:SIMILAR_PHSYICAL_TRAIT]->(p2) , (p2)-[r2:SIMILAR_PHSYICAL_TRAIT]->(p1)
+RETURN
+  p1, r1, r2, p2
+
+
+// It matches the properties and goes until common values
+MATCH
+  (p:Person{name:"Marie Kennedy"}),
+  (p)-[r2:SIMILAR_PHSYICAL_TRAIT]->(p1:Person),
+  path = (p1) - [r:MOTHER_OF | :FATHER_OF *1..6] - (p2:Person)
+WHERE
+  p.lastName = p1.lastName
+  OR p.lastName = p2.lastName
+  OR  p.placeOfBirth = p1.placeOfBirth
+  OR  p.placeOfBirth = p2.placeOfBirth
+  OR  p.education CONTAINS p1.education
+  OR  p1.education CONTAINS p.education
+  OR  p.education CONTAINS p2.education
+  OR  p2.education CONTAINS p.education
+  OR  p.occupation CONTAINS p1.occupation
+  OR  p1.occupation CONTAINS p.occupation
+  OR  p.occupation CONTAINS p2.occupation
+  OR  p2.occupation CONTAINS p.occupation
+RETURN
+  p, p1, r, p2,
+  p.lastName, p1.lastName, p2.lastName,
+  p.placeOfBirth, p1.placeOfBirth, p2.placeOfBirth,
+  p.education, p1.education,  p2.education,
+  p.occupation, p1.occupation, p2.occupation
+;
+
 
 
 // Sub Story 3

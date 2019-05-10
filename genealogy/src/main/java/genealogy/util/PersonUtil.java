@@ -118,6 +118,10 @@ public final class PersonUtil {
 		try { person.setDateOfBirth(jsonPerson.getString("dateOfBirth")); }
 		catch(Exception ex) { System.err.println("Date Of Birth not defined for >> " + name); }
 
+		// Place Of Birth
+		try { person.setPlaceOfBirth(jsonPerson.getString("placeOfBirth")); }
+		catch(Exception ex) { System.err.println("Place Of Birth not defined for >> " + name); }
+
 		// Is Alive
 		try { person.setIsAlive(jsonPerson.getBoolean("isAlive")); }
 		catch(Exception ex) { System.err.println("Is Alive not defined for >> " + name); }
@@ -145,6 +149,10 @@ public final class PersonUtil {
 		// Medical Condition
 		try { person.setMedicalCondition(Common.jsonArrayToStringArray(jsonPerson.getJSONArray("medicalCondition"))); }
 		catch(Exception ex) { System.err.println("Medical Condition not defined for >> " + name); }
+
+		// Physical Traits
+		try { person.setPhysicalTraits(Common.jsonArrayToStringArray(jsonPerson.getJSONArray("physicalTraits"))); }
+		catch(Exception ex) { System.err.println("Physical Traits not defined for >> " + name); }
 
 
 		/*
@@ -175,10 +183,6 @@ public final class PersonUtil {
 		// Language
 		try { person.setLanguages(Common.jsonArrayToStringArray(jsonPerson.getJSONArray("languages"))); }
 		catch(Exception ex) { System.err.println("Language not defined for >> " + name); }
-
-		// Physical Traits
-		try { person.setPhysicalTraits(Common.jsonArrayToStringArray(jsonPerson.getJSONArray("physicalTraits"))); }
-		catch(Exception ex) { System.err.println("Physical Traits not defined for >> " + name); }
 
 		// Special Characteristic
 		try { person.setSpecialCharacteristic(Common.jsonArrayToStringArray(jsonPerson.getJSONArray("specialCharacteristic"))); }
@@ -271,6 +275,10 @@ public final class PersonUtil {
 				personNode.setMedicalCondition(person.getMedicalCondition());
 				attributeSet = true;
 			}
+			if(person.getPhysicalTraits()!=null) {
+				personNode.setPhysicalTraits(person.getPhysicalTraits());
+				attributeSet = true;
+			}
 
 			/*
 			if(person.getResidence()!=null) {
@@ -294,10 +302,6 @@ public final class PersonUtil {
 				attributeSet = true;
 			}
 
-			if(person.getPhysicalTraits()!=null) {
-				personNode.setPhysicalTraits(person.getPhysicalTraits());
-				attributeSet = true;
-			}
 			if(person.getLocations()!=null) {
 				personNode.setLocations(person.getLocations());
 				attributeSet = true;
@@ -311,8 +315,10 @@ public final class PersonUtil {
 				attributeSet = true;
 			}
 			*/
+
 			if(attributeSet)
 				return personNode;
+
 			return null;
 		}
 		catch(Exception ex) {
