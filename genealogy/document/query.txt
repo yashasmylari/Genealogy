@@ -69,6 +69,8 @@ RETURN k,r,l
 // User Story #4 
 // Jason wants check migration of his family tree
 // The migration relationship also shows migration year
+// In order to go deeper the node level can be defined in the [r] relationship
+// e.g  [r:SON_OF |:DAUGHTER_OF *1..7]
 MATCH (p:Person) - [r:SON_OF |:DAUGHTER_OF] -> (p1:Person) - [l:LIVED] -> (pr:Province)
 WHERE
   p.name = "Jason Smith"
