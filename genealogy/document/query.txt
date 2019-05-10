@@ -43,10 +43,7 @@ MATCH (n:Person{name:"Leshya Singh"}) SET n.residence = "Toronto,Canada" RETURN 
 
 // User Story #2
 
-// Disconnect the family tree
-// Find the Starting and the Ending Nodes and Check if they are the same
-// Connect the ending nodes
-
+// Find relation among the two people having a strong relationship
 MATCH (p1:Person {name: "Roy"}), (p2:Person {name: "Hugh"}),
 path = allShortestPaths((p1)-[:FATHER_OF | :MOTHER_OF |:MARRIED_TO *]-(p2))
 RETURN path
