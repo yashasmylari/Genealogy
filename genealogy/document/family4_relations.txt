@@ -28,5 +28,25 @@
 		"person1" : "Akaldeep Singh",
 		"person2" : "Sukhwinder Singh",
 		"relation" : "parent"
-	}
+	},
+	{
+		"person1" : "Geet Kaur",
+		"person2" : "Karamjeet Singh",
+		"relation" : "married"
+	},
+	{
+		"person1" : "Geet Kaur",
+		"person2" : "Karamjeet Singh",
+		"relation" : "married"
+	},
+	{
+		"person1" : "Leshya Singh",
+		"person2" : "Sukhwinder Singh",
+		"relation" : "married"
+	},
+	{
+		"person1" : "Maahi Singh",
+		"person2" : "Akaldeep Singh",
+		"relation" : "married"
+	},
 ]
