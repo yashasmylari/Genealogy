@@ -176,4 +176,28 @@ public class PersonController {
 	}
 
 
+	/**
+	 * Finds the person with the given name ands image path.
+	 * @param name
+	 * @param imagepath
+	 * @return strPerson
+	 */
+	@RequestMapping(path = "/addImage", method = {RequestMethod.GET, RequestMethod.POST})
+	public String addImage(@RequestBody String reqBody) {
+		try {
+			JSONObject jsonData = new JSONObject(reqBody);
+			String name = jsonData.getString("name");
+			String imagePath = jsonData.getString("imagePath");
+			Person person = personService.addImage(name, imagePath);
+			if(person!=null)
+				return person.toString();
+			return "{}";
+		}
+		catch(Exception ex) {
+			log.error("An error occurred while finding person", ex);
+			return new StringBuilder("{\"error\":\"").append(ex).append("\"}").toString();
+		}
+	}
+
+
 }

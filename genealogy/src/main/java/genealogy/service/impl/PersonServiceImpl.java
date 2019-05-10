@@ -1,5 +1,6 @@
 package genealogy.service.impl;
 
+import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,6 +13,16 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.Mongo;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.gridfs.GridFS;
+import com.mongodb.gridfs.GridFSInputFile;
+
+import genealogy.dao.MongoImageRepository;
 import genealogy.dao.PersonRepository;
 import genealogy.dto.*;
 import genealogy.service.PersonService;
@@ -28,6 +39,9 @@ public class PersonServiceImpl implements PersonService {
 
 	@Autowired(required=false)
 	StringRedisTemplate redisTemplate;
+
+	@Autowired
+	private MongoImageRepository repository;
 
 
 	@Override
@@ -164,6 +178,23 @@ public class PersonServiceImpl implements PersonService {
 		}
 		catch(Exception ex) {
 			log.error("An error occurred while finding the person", ex);
+			return null;
+		}
+	}
+
+
+
+	@Override
+	public Person addImage(String name, String imagePath) {
+		try {
+			Person person = personRepository.findByName(name);
+
+			if(person!=null)
+				return person;
+			return null;
+		}
+		catch(Exception ex) {
+			log.error("An error occurred while saving the image of person", ex);
 			return null;
 		}
 	}

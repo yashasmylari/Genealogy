@@ -47,4 +47,12 @@ public interface PersonService {
 	 */
 	Person findPerson(String name);
 
+	/**
+	 * Finds the Person node and adds the image path
+	 * @param name
+	 * @param imagePath
+	 * @return person
+	 */
+	Person addImage(String name, String imagePath);
+
 }
